@@ -1,2 +1,5 @@
-# GradGeneratorSimply
-CSS gradient generator with Jquery.
+# GradGeneratorSimplyWP 
+Wordpress (backend) CSS gradient generator with Jquery.
+
+
+
