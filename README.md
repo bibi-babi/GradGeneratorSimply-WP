@@ -72,14 +72,12 @@ add_action( 'admin_enqueue_scripts', 'theme_page_admin_styles' );
 
 
 ```
-function theme_page_admin_styles() {
-
-          // SPECIAL ICON Add Fontawesome Icons ||  http://fontawesome.io || URL link esternal get id https://cdnjs.com/libraries/font-awesome
+   // SPECIAL ICON Add Fontawesome Icons ||  http://fontawesome.io || URL link esternal get id https://cdnjs.com/libraries/font-awesome
         wp_enqueue_style( 'icon-style-font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css','','4.7.0', all );
         
         //Circular Slider || https://github.com/soundar24/roundSlider
         wp_enqueue_style('roundslider-css',get_stylesheet_directory_uri().'/gradient-resources/js/external-js/RoundSlider/roundslider.min.css','','1.3', all ); 
-
+ 
         //Some Effect  and CSS for animation
         wp_enqueue_script('graphic-effects-js',get_stylesheet_directory_uri(). '/gradient-resources/js/graphic-effects.min.js',array( 'jquery' ), '1.0', false  );  
         wp_enqueue_style('general-text-css',get_stylesheet_directory_uri().'/gradient-resources/css/general-text.min.css','','1.0', all); 
@@ -100,16 +98,16 @@ function theme_page_admin_styles() {
            wp_enqueue_script('jquery-touch-punch');    //Iris Jquery   Dependencies
          }
         //  load-scripts.php  jquery-ui-core,jquery-ui-widget,jquery-ui-accordion...... 
-        else { wp_enqueue_script('jquery-ui-core');         //UI Jquery                 | Dependencies for -&gt; Iris 
+        else { wp_enqueue_script('jquery-ui-core');         //UI Jquery                 | Dependencies for -> Iris 
                wp_enqueue_script('jquery-ui-accordion');    //UI Jquery Accordion       
-               wp_enqueue_script('jquery-ui-slider');       //UI Jquery slider          | Dependencies for -&gt; Iris
+               wp_enqueue_script('jquery-ui-slider');       //UI Jquery slider          | Dependencies for -> Iris
                wp_enqueue_script('jquery-ui-tooltip');      //UI Jquery  tooltip        
                wp_enqueue_script('jquery-ui-resizable');    //UI Jquery resize box    
                
-               wp_enqueue_script('jquery-effects-core');    //Slider Bar (class option -&gt; add class, remove, toogle)
+               wp_enqueue_script('jquery-effects-core');    //Slider Bar (class option -> add class, remove, toogle)
         }  
         //  -----------------------------------------------------------------------
-
+ 
         //CUSTOM WIDGET JQUERY UI | funzioni di personalizzazione dei widget UI. Fondamentale, nel richiamo mettere array il nome del jquery che serve es: jquery-ui-slider che chiede: ui.slider
         wp_enqueue_script('jquery-ui-widget-exstension',get_stylesheet_directory_uri().'/gradient-resources/js/jquery-ui-widget-exstension.min.js',array( 'jquery', 'jquery-ui-core','jquery-ui-slider' ),'1.0', false );   
         //----------------------------------------------------------
@@ -117,12 +115,12 @@ function theme_page_admin_styles() {
  
  
         //UI COLOR PIKER  ------------------
-        // Dependencies -&gt;  jQuery 1.7  +  ()'jquery-ui-draggable', 'jquery-ui-slider', 'jquery-touch-punch') (jQuery UI core, widget, and mouse components. )
+        // Dependencies ->  jQuery 1.7  +  ()'jquery-ui-draggable', 'jquery-ui-slider', 'jquery-touch-punch') (jQuery UI core, widget, and mouse components. )
         if (       !wp_script_is('iris',$list='registered') ){
                     wp_enqueue_script( 'wp-color-picker' ); wp_enqueue_style( 'wp-color-picker' ); 
         } else if (!wp_script_is('wp-color-picker',$list='registered') ){
                     wp_enqueue_script('farbtastic'); wp_enqueue_style( 'farbtastic' ); 
-        } else {    //Dependencies -&gt; Iris relies on jQuery 1.7 and up, and the draggable and slider jQuery UI components. (Those then presume jQuery UI core, widget, and mouse components. 
+        } else {    //Dependencies -> Iris relies on jQuery 1.7 and up, and the draggable and slider jQuery UI components. (Those then presume jQuery UI core, widget, and mouse components. 
                     // wp_enqueue_script('iris');  
                     //wp_enqueue_style('iris'); 
                     wp_enqueue_script( 'wp-color-picker' );  //piker default
@@ -154,9 +152,10 @@ function theme_page_admin_styles() {
         wp_enqueue_script('GradGeneratorSimply-js', get_stylesheet_directory_uri().'/gradient-resources/js/GradGeneratorSimply.min.js',array( 'jquery','roundslider-js','wp-color-picker' ),'1.0', false );   
         //----------------------------------------------------------
        
-
+ 
 }
 add_action( 'admin_enqueue_scripts', 'theme_page_admin_styles' );
+
 ```
 
 
@@ -186,17 +185,17 @@ Now that we've uploaded the js-css files and loaded the php functions into an ad
 In the child theme example, I recreated a simple page in the theme admin menu. You will have to upload this content to the location where the gradient generator will appear.
 
 ```
-//To properly save the options set in the gradient, you must create an identifier for the options for a single group.
+ //To properly save the options set in the gradient, you must create an identifier for the options for a single group.
     $STheme = 'this_theme_hook_settings'; //Full name of the options group. Then the variable inside contains all theme options.
     $VTheme = 'variabile_theme_thistheme'; //Variable name that retrieves the internal group of theme options
     $id_opt_grad = 'graphtemplate_header_bgstyle'; //Single name option to be saved in the options group for all gradient elements. (Each element adds a different identifier to the name)
     
-    echo '&lt;div id="content-box-page" &gt;';
+    echo '<div id="content-box-page" >';
         color_gradient($id_opt_grad,$VTheme,$STheme); 
-    echo '&lt;/div&gt;'; 
+    echo '</div>'; 
 
-?&gt;&lt;!-- SCRIPT OPTION --&gt;
-    &lt;script type="text/javascript"&gt;
+?><!-- SCRIPT OPTION -->
+    <script type="text/javascript">
     jQuery(document).ready(function($){ 
           
           
@@ -214,7 +213,7 @@ In the child theme example, I recreated a simple page in the theme admin menu. Y
      
           
     });
-    &lt;/script&gt;
+    </script>
 
 ```
 
