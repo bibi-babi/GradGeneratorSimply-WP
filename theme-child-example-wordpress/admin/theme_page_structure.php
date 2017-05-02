@@ -26,12 +26,12 @@ if (file_exists(get_stylesheet_directory().'/gradient-resources/gradient-functio
         wp_enqueue_style('roundslider-css',get_stylesheet_directory_uri().'/gradient-resources/js/external-js/RoundSlider/roundslider.min.css','','1.3', all ); 
 
         //Some Effect  and CSS for animation
-        wp_enqueue_script('graphic-effects-js',get_stylesheet_directory_uri(). '/gradient-resources/js/graphic-effects.js',array( 'jquery' ), '1.0', false  );  
-        wp_enqueue_style('general-text-css',get_stylesheet_directory_uri().'/gradient-resources/css/general-text.css','','1.0', all); 
+        wp_enqueue_script('graphic-effects-js',get_stylesheet_directory_uri(). '/gradient-resources/js/graphic-effects.min.js',array( 'jquery' ), '1.0', false  );  
+        wp_enqueue_style('general-text-css',get_stylesheet_directory_uri().'/gradient-resources/css/general-text.min.css','','1.0', all); 
         //----------------------------------------------------------
         
         //Gradient Generator function js      
-        wp_enqueue_style('GradGeneratorSimply-css',get_stylesheet_directory_uri().'/gradient-resources/css/GradGeneratorSimply.css','','1.0', all); 
+        wp_enqueue_style('GradGeneratorSimply-css',get_stylesheet_directory_uri().'/gradient-resources/css/GradGeneratorSimply.min.css','','1.0', all); 
         //----------------------------------------------------------
         
     } //---------------------------------------------------------------------------------
@@ -69,7 +69,7 @@ if (file_exists(get_stylesheet_directory().'/gradient-resources/gradient-functio
         //  -----------------------------------------------------------------------
 
         //CUSTOM WIDGET JQUERY UI | funzioni di personalizzazione dei widget UI. Fondamentale, nel richiamo mettere array il nome del jquery che serve es: jquery-ui-slider che chiede: ui.slider
-        wp_enqueue_script('jquery-ui-widget-exstension',get_stylesheet_directory_uri().'/gradient-resources/js/jquery-ui-widget-exstension.js',array( 'jquery', 'jquery-ui-core','jquery-ui-slider' ),'1.0', false );   
+        wp_enqueue_script('jquery-ui-widget-exstension',get_stylesheet_directory_uri().'/gradient-resources/js/jquery-ui-widget-exstension.min.js',array( 'jquery', 'jquery-ui-core','jquery-ui-slider' ),'1.0', false );   
         //----------------------------------------------------------
  
  
@@ -91,7 +91,7 @@ if (file_exists(get_stylesheet_directory().'/gradient-resources/gradient-functio
         wp_enqueue_script( 'wp-color-picker-alpha',get_stylesheet_directory_uri().'/gradient-resources/js/external-js/wp-color-picker-alpha.min.js', array('wp-color-picker'), '1.2.2', false ); 
         
         //option for color piker
-        wp_enqueue_script( 'wp-color-picker-option', get_stylesheet_directory_uri().'/gradient-resources/js/wp-color-piker-option.js','', '1.0', false ); 
+        wp_enqueue_script( 'wp-color-picker-option', get_stylesheet_directory_uri().'/gradient-resources/js/wp-color-piker-option.min.js','', '1.0', false ); 
         //----------------------------------------------------------
          
         
@@ -101,15 +101,15 @@ if (file_exists(get_stylesheet_directory().'/gradient-resources/gradient-functio
         wp_enqueue_script('roundslider-js',get_stylesheet_directory_uri().'/gradient-resources/js/external-js/RoundSlider/roundslider.min.js', array('jquery'), '1.3', false ); 
    
         //option fro roundslider
-        wp_enqueue_script('roundslider-option-js',get_stylesheet_directory_uri().'/gradient-resources/js/RoundSlider-option.js',array( 'jquery','roundslider-js'), '1.0', false );   
+        wp_enqueue_script('roundslider-option-js',get_stylesheet_directory_uri().'/gradient-resources/js/RoundSlider-option.min.js',array( 'jquery','roundslider-js'), '1.0', false );   
         //----------------------------------------------------------
         
         //Some Effect  and CSS for animation
-        wp_enqueue_script('graphic-effects-js',get_stylesheet_directory_uri() . '/gradient-resources/js/graphic-effects.js',array( 'jquery' ), '1.0', false  );  
+        wp_enqueue_script('graphic-effects-js',get_stylesheet_directory_uri() . '/gradient-resources/js/graphic-effects.min.js',array( 'jquery' ), '1.0', false  );  
         //----------------------------------------------------------
    
         //Gradient Generator function js      
-        wp_enqueue_script('GradGeneratorSimply-js', get_stylesheet_directory_uri().'/gradient-resources/js/GradGeneratorSimply.js',array( 'jquery','roundslider-js','wp-color-picker' ),'1.0', false );   
+        wp_enqueue_script('GradGeneratorSimply-js', get_stylesheet_directory_uri().'/gradient-resources/js/GradGeneratorSimply.min.js',array( 'jquery','roundslider-js','wp-color-picker' ),'1.0', false );   
         //----------------------------------------------------------
          
                 

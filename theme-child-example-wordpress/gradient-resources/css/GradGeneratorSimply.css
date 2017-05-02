@@ -1,0 +1,395 @@
+/*4.2 Gradient box*/
+
+/*.ggs-gradient-content{}*/
+
+.ggs-gradient-content .ggs-gradient-preview-box{
+    border: 1px solid #dddddd;
+    background: #ffffff;
+    color: #333333;
+    
+    display: inline-block;
+    width: 100%;
+    height: 150px;
+    /*padding: 3px 15px 4px; */
+}
+.ggs-gradient-content .ggs-gradient-preview-box .previw-box{
+    width: 96%;
+    height: 92%;
+    display: block;
+    padding: 0 2% 2%;
+}
+
+.ggs-gradient-content .ggs-gradient-preview-box .gradient-prev{
+    text-align: left;
+    font-weight: 700;
+    padding: 0;
+    height: 30px;
+    line-height: 30px;
+}
+.ggs-gradient-content .ggs-gradient-preview-box .box-gradient{
+     width: 100%;
+    height: calc(100% - 30px);
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+}
+.ggs-gradient-content .ggs-gradient-commands {
+    display: inline-block;
+    width: 100%;
+    padding: 0%;
+    margin: 27px 0 0 0;
+   
+}
+    /*4.3 Coloro Piker no text*/
+.wp-picker-container-notext {
+    margin: 0;
+    vertical-align: middle;
+    height: auto;
+}
+.wp-picker-container-notext .wp-color-result{
+    border: 0px solid #ccc;
+    box-shadow: 0px 0px 0 #ccc;
+    margin: 0 5px 0px 0;
+    padding-left: 0;
+    height: 30px;
+    width: 30px;
+    vertical-align: middle;
+}
+.wp-picker-container-notext .wp-color-result span{
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    margin: 0 6px 0px 0;
+    border: 0px solid #ccc;
+    box-shadow: inset 0 0 5px rgba(0,0,0,.4); /*interno*/
+}
+.wp-picker-container-notext .wp-picker-input-wrap{
+    vertical-align: middle;
+    padding-top: 0px;
+}
+    /*----------------*/
+
+
+
+    /*5.4 Slider gradient*/
+.slider-bar-gradient .ui-slider-handle{
+    margin-top: -4px;
+    border: 3px solid #fff;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.5);
+    -webkit-box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.5);
+ 
+}  
+
+    /*--------------------------------*/
+
+
+
+/*5.3 Slider circle*/
+.ggs-slidercircle-edg .rs-range-color{ background-color: #0073AA; } /*barra attiva*/
+.ggs-slidercircle-edg .rs-path-color { background-color: #E4E4E4; }  /*sfondo barra*/
+.ggs-slidercircle-edg .rs-border  {    border: 1px solid #aaa;}  /*bordo barra slider*/
+.ggs-slidercircle-edg .rs-handle  { /*cursore*/
+    background-color: #0073AA;
+    padding: 7px;
+    border: 2px solid #FFFFFF;
+}
+.ggs-slidercircle-edg .rs-handle.rs-focus  { border-color: #CCCCCC;}
+.ggs-slidercircle-edg .rs-handle:after  {
+    border-color: #33B5E5;
+    background-color: #33B5E5;
+}
+.ggs-slidercircle-edg .rs-tooltip, .ggs-slidercircle-edg .rs-tooltip.hover, .ggs-slidercircle-edg .rs-tooltip.edit:hover{ /*conenitore numerico*/
+    background-color: #FFF;
+    border: 1px solid #CCC;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07) inset;
+    color: #32373c;
+}
+.ggs-slidercircle-edg .rs-tooltip{z-index: 3; } /*diminuirlo da 10 a 3 altrimenti sta sopra le barre delle sezioni accordio*/
+.ggs-slidercircle-edg .rs-tooltip-text{ 
+    min-width: 45px; /*altrimenti quando metti un numero piccolo si restringe troppo*/
+    height: 36px;
+    margin: 0;
+    line-height: 34px;
+    padding: 0;
+} 
+.ggs-slidercircle-edg .rs-bar {z-index: 3!important;} /*diminuirlo da 10 a 3 altrimenti sta sopra le barre delle sezioni accordio*/
+.ggs-slidercircle-edg .rs-input { border: 0px solid #CCC;}
+.ggs-slidercircle-edg .rs-handle{
+  -webkit-user-select: none;  /* Chrome all / Safari all */
+  -moz-user-select: none;     /* Firefox all */
+  -ms-user-select: none;      /* IE 10+ */
+  user-select: none;          /* Likely future */      
+}
+/*--------------------------------*/
+
+
+/* 0.0 Preview */
+
+    /*0.1 preview icon*/
+.gradient-prev-icon {
+    display: inline-block; 
+    float:right;
+}    
+.ggs-full-view-prev, .ggs-fullback-view-prev{
+    padding: 5px;
+    cursor: pointer;
+}
+.ggs-full-view-prev:hover, .ggs-fullback-view-prev:hover{
+    opacity: 0.8;
+}
+.ggs-full-view-prev{    display: inline-block; } 
+.ggs-fullback-view-prev{ display: none; }
+    /*--------------*/
+
+    /*0.2 preview fullbox*/
+.ggs-preview-fullbox{
+    position: fixed;
+    top: 32px;
+    z-index: 10000; /*per stare sopra al bordo del titolo della sezione e al menu di wordpress*/
+    left: 0;
+    width: 100%;
+    box-shadow: 0px 5px 4px 3px rgba(68, 66, 68, 0.84);
+    -webkit-box-shadow: 0px 5px 4px 3px rgba(68, 66, 68, 0.84);
+    -moz-box-shadow: 0px 5px 4px 3px rgba(68, 66, 68, 0.84);
+
+}
+    /*--------------*/
+   
+   
+/*--------------------------------*/
+
+
+
+/* 0.0 Slider UI */
+
+.ggs-gradient-content .box-slider .ui-slider{
+    float: none;
+    width: 100%;
+    margin: 10px 0 5px;
+    font-size: 17px;
+    height: 12px;
+    position: relative;
+    text-align: left;
+    -webkit-border-radius: 4px;   
+    border-radius: 4px;
+}
+
+
+.ggs-gradient-content .box-slider .ui-widget-content {  border: 1px solid #aaaaaa;   color: #222222;}
+
+.ggs-gradient-content .box-slider .ui-slider-range-min {  left: 0;}
+.ggs-gradient-content .box-slider .ui-slider .ui-slider-range {
+    border: 0 none;
+    display: block;
+    position: absolute;
+    z-index: 1;
+    height: 100%;  
+    top: 0;
+    -webkit-border-radius: 2px;
+    border-radius: 2px; 
+}
+.ggs-gradient-content .box-slider .ui-slider-horizontal .ui-slider-handle {
+    margin-left: -0.6em;
+    top: -0.3em;
+}
+.ggs-gradient-content .box-slider .ui-slider .ui-slider-handle{
+    cursor: pointer;
+    position: absolute;
+    height: 25px;
+    width: 25px;
+    z-index: 2;
+    border: 3px solid #fff;
+    -webkit-border-radius: 50%;   
+    border-radius: 50%;
+    color: #555555;
+    font-weight: normal;
+    
+    /*bg gradient*/
+    background: #efefef;
+    background: -moz-linear-gradient(top, #efefef 53%, #e0e0e0 55%);
+    background: -webkit-linear-gradient(top, #efefef 53%,#e0e0e0 55%);
+    background: linear-gradient(to bottom, #efefef 53%,#e0e0e0 55%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#efefef', endColorstr='#e0e0e0',GradientType=0 );
+}
+.ggs-gradient-content .box-slider .ui-slider .ui-slider-handle:hover {
+    background: #fdfdfd ;
+    background: -moz-linear-gradient(top, #fdfdfd  53%, #ececec 55%);
+    background: -webkit-linear-gradient(top, #fdfdfd  53%,#ececec 55%);
+    background: linear-gradient(to bottom, #fdfdfd  53%,#ececec 55%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fdfdfd ', endColorstr='#ececec',GradientType=0 );   
+}
+.ggs-gradient-content .box-slider .ui-slider-horizontal .ui-slider-handle {
+    margin-left: -0.6em;
+    top: -0.3em;
+}
+.ggs-gradient-content .box-slider .slider-bar-content{  background: #E4E4E4; }
+
+
+/*----------------------------------*/
+
+
+/*0.0 box color*/
+.ggs-gradient-content .title-sub-box-normal{
+    font-size: 16px;
+    font-weight: 600;
+    display: inline-block;
+    margin: 0;
+    vertical-align: middle;
+}
+
+.ggs-icon-minus, .ggs-icon-plus{
+    background: #E4E4E4;
+    border: 1px solid #AAAAAA; 
+    color: #AAAAAA;
+    font-size: 20px;
+    vertical-align: middle;
+    text-align: center;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+.ggs-icon-minus::before, .ggs-icon-plus::before{
+    line-height: 40px;
+}    
+
+.ggs-box-color-grad-seq{
+    width: auto; /*altrimenti il colore  box fa andare tutto inculato da altre parti*/
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 4% 10px 0;
+}
+.ggs-box-color-grad-seq .wp-picker-container .wp-color-result{
+    border: 0px solid #ccc;
+    box-shadow: 0px 0px 0 #ccc;
+    margin: 0 0px 0px 0;
+    padding-left: 0;
+    height: 40px;
+    width: 40px;
+    vertical-align: middle;
+
+}
+.ggs-box-color-grad-seq .wp-picker-container .wp-color-result span{
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius:  0;
+    
+    border-top-left-radius: 0px!important;      /*genera la curvatura in automatico il jquery*/
+    border-bottom-left-radius: 0px !important;  /*genera la curvatura in automatico il jquery*/
+    margin: 0;
+    padding: 0;
+ 
+} 
+.ggs-box-color-grad-seq .wp-picker-container .wp-color-result span:hover{ background: rgba(9, 9, 9, 0.17);}
+   
+.ggs-box-color-grad-seq .wp-picker-container .wp-picker-input-wrap{
+}
+.ggs-box-color-grad-seq .wp-picker-container .wp-picker-input-wrap input[type="text"]{
+    border-radius: 0;
+    -webkit-border-radius:0;
+    -moz-border-radius: 0;
+    height: 40px;
+    line-height: 40px;
+    width: 168px!important; /*perchè il box del colore sia largo esattamente il totale del box colore,del input e del bottone pulisci.*/
+}
+.ggs-box-color-grad-seq .wp-picker-container .wp-picker-input-wrap .wp-picker-clear{
+    border-radius: 0;
+    -webkit-border-radius:0;
+    -moz-border-radius: 0;
+    height: 40px;
+    line-height: 40px;
+    margin: 0;
+    border-width: 1px 0px 1px 0px;
+}
+.ggs-box-color-grad-seq .wp-picker-container .iris-picker{
+    margin: 0;
+    border-width: 0px 1px 1px 1px;
+}
+
+.ggs-box-color-grad-seq .l-name-input{
+    display: inline-block;
+    padding: 0;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07) inset;
+    -webkit-box-shadow:0 1px 2px rgba(0, 0, 0, 0.07) inset;
+    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07) inset;
+    border: 1px solid #ccc;
+    margin: 0 0 0 -4px;
+    line-height: 38px; /*non 30 se no diventa più alto*/
+    height: 38px;       /*non 30 se no diventa più alto*/
+    padding: 0 5px 0 0;
+
+}
+.ggs-box-color-grad-seq .l-name-input .input-color-grad-seq{
+    width: 40px;
+    padding: 5px;
+    margin:0;
+    line-height: 38px; /*non 30 se no diventa più alto*/
+    height: 38px;       /*non 30 se no diventa più alto*/
+    border: 0px; 
+    vertical-align: top;
+    text-align: center;
+    
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    
+    
+    
+}
+
+/*NASCONDI FRECCE CAMPO NUMERICO*/
+.ggs-box-color-grad-seq .l-name-input .input-color-grad-seq[type="number"]{   -moz-appearance: textfield;}
+.ggs-box-color-grad-seq .l-name-input .input-color-grad-seq[type="number"]::-webkit-outer-spin-button{ 
+    /* display: none; <- Crashes Chrome on hover */
+-webkit-appearance: none;
+margin: 0; /* <-- Apparently some margin are still there even though it's hidden */    
+}
+  
+
+/*----------------------------------*/
+
+
+
+/*0.0 box EXAMPLE */
+.ggs-gradient-exemple{}
+.ggs-gradient-exemple-boxs{}
+
+.ggs-gradient-exemple-el{
+    /*width: 80px;
+    height: 40px;*/
+    display: inline-block;
+    margin: 0 7px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+}
+.ggs-gradient-exemple-el:hover {opacity: 0.7;}
+
+.ggs-gradient-exemple .el-1{
+    background: rgb(23, 183, 237);
+    background: linear-gradient(298deg,rgb(23, 183, 237) 0%, rgb(9, 106, 191) 100%);            /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    background: -webkit-linear-gradient(298deg,rgb(23, 183, 237) 0%, rgb(9, 106, 191) 100%);    /* Chrome10-25,Safari5.1-6 */
+    background: -moz-linear-gradient(298deg,rgb(23, 183, 237) 0%, rgb(9, 106, 191) 100%);       /* For Firefox 3.6 to 15 */
+    background: -o-linear-gradient(298deg,rgb(23, 183, 237) 0%, rgb(9, 106, 191) 100%);         /* Opera 11.10-11.50 */
+    background: -ms-linear-gradient(298deg,rgb(23, 183, 237) 0%, rgb(9, 106, 191) 100%);        /* IE10 preview */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='rgb(23, 183, 237)', endColorstr='rgb(9, 106, 191)',GradientType=0 );
+}
+.ggs-gradient-exemple .el-2{
+    background: rgb(123, 224, 22);
+    background: radial-gradient(50px 50px at 0% 50% , rgb(123, 224, 22) 1%, rgb(4, 176, 219) 100%);         /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    background: -webkit-radial-gradient(0% 50%, 50px 50px, rgb(123, 224, 22) 1%, rgb(4, 176, 219) 100%);    /* Chrome10-25,Safari5.1-6 */
+    background: -moz-radial-gradient(0% 50%, 50px 50px, rgb(123, 224, 22) 1%, rgb(4, 176, 219) 100%);       /* For Firefox 3.6 to 15 */
+    background: -o-radial-gradient(0% 50%, 50px 50px, rgb(123, 224, 22) 1%, rgb(4, 176, 219) 100%);         /* Opera 11.10-11.50 */
+    background: -ms-radial-gradient(0% 50%, 50px 50px, rgb(123, 224, 22) 1%, rgb(4, 176, 219) 100%);        /* IE10 preview */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='rgb(123, 224, 22)', endColorstr='rgb(4, 176, 219)',GradientType=0 );
+}
+
+
+/*----------------------------------*/
