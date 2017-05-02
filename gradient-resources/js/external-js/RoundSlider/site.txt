@@ -1,0 +1,2 @@
+SITE: 	 http://roundsliderui.com/
+GITHUB:  https://github.com/soundar24/roundSlider
