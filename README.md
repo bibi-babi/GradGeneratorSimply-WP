@@ -166,7 +166,7 @@ The html content is so complex and long, that the various parts have been conver
 The php functions you find in the <a href="https://github.com/bibi-babi/GradGeneratorSimply-WP/blob/master/file/gradient-resources/gradient-function.php" target="_blank" rel="noopener noreferrer">**gradient-function.php**</a> file, and NEED you upload on WP with request in page functions.php:
 
 ```
-require_once( get_stylesheet_directory() . '/admin/theme_page_structure.php' ); 
+require_once( get_stylesheet_directory() . '/gradient-function.php' ); 
 ```
 
 The page have:
@@ -284,9 +284,9 @@ $('.ggs-gradient-content')GradGeneratorSimply({
 	max_color  	: 10, //number of color max to use 
 		
 	//exemple value
-	example_cont_class:   '.ggs-gradient-exemple-boxs',
-	example_box_width: 	  '80px',
-	example_box_height:   '40px',
+	example_cont_class:   	'.ggs-gradient-exemple-boxs',
+	example_box_width: 	'80px',
+	example_box_height:   	'40px',
 		
 	example_multioption: {     // OPTION FOR EACH EXAMPLE
 		exampleval_1: {	numcolor: 			'2',
