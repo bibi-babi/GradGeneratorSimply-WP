@@ -243,12 +243,19 @@ var
     R_vert      = jQuery(opti.r_vert);
    
     //radio button
-    G_rep       = jQuery(opti.g_rep);
-    G_norep     = jQuery(opti.g_norep);
-    G_linear    = jQuery(opti.g_linear);
-    G_radial    = jQuery(opti.g_radial);
-    G_circle    = jQuery(opti.g_circle);
-    G_ellipse   = jQuery(opti.g_ellipse);
+    G_rep       	= jQuery(opti.g_rep);
+    G_rep_input 	= jQuery(opti.g_rep+' input');
+    G_norep     	= jQuery(opti.g_norep);
+    G_norep_input	= jQuery(opti.g_norep+' input');
+    G_linear    	= jQuery(opti.g_linear);
+    G_linear_input 	= jQuery(opti.g_linear+' input');
+    G_radial    	= jQuery(opti.g_radial);
+    G_radial_input 	= jQuery(opti.g_radial+' input');
+    G_circle    	= jQuery(opti.g_circle);
+    G_circle_input 	= jQuery(opti.g_circle+' input');
+    G_ellipse   	= jQuery(opti.g_ellipse);
+    G_ellipse_input	= jQuery(opti.g_ellipse+' input');
+
     
 //....................................
 
@@ -878,23 +885,25 @@ var
 				        
 			//repeating
 			//repeat , not-repeat
-			if(Repeat_Action 	== 'repeat'){ 	G_rep.addClass('borderful'); 							G_norep.removeClass('borderful');				} else {	G_rep.removeClass('borderful');	G_norep.addClass('borderful');}
-			if(Linear_Radial 	== 'linear'){ 	G_linear.addClass('borderful');							G_radial.removeClass('borderful');	
-												jQuery(opti.box_show_linear).css('display','block'); 	jQuery(opti.box_show_radial).css('display','none'); 
-			
-			} else {							G_linear.removeClass('borderful');						G_radial.addClass('borderful');
-												jQuery(opti.box_show_linear).css('display','none'); 	jQuery(opti.box_show_radial).css('display','block'); 
-					}
+			if(Repeat_Action 	== 'repeat'){ 	console.dir(G_rep_input);
+												G_rep_input.prop("checked", true); 		G_rep.addClass('borderful'); 		G_norep.removeClass('borderful');				
+			} else {							G_norep_input.prop("checked", true);	G_rep.removeClass('borderful');		G_norep.addClass('borderful');					
+				 }
+			if(Linear_Radial 	== 'linear'){ 	G_linear_input.prop("checked", true);	G_linear.addClass('borderful');		G_radial.removeClass('borderful');	
+													jQuery(opti.box_show_linear).css('display','block'); 	jQuery(opti.box_show_radial).css('display','none'); 
+			} else {							G_radial_input.prop("checked", true);	G_linear.removeClass('borderful');	G_radial.addClass('borderful');
+													jQuery(opti.box_show_linear).css('display','none'); 	jQuery(opti.box_show_radial).css('display','block'); 
+				   }
 			
 			
 			//edg direction linear 
 			Linear_edg.val(Linear_direction);
 			Round_Slider(opti.sliderID_circle,Linear_edg,Linear_direction); //aziona il roundSlider per cambiare il valore
-        	
-        	
+
+
 			//radial cirlce elips button radio
-			if(Circle_Ellipse 	== 'circle'){ 	G_circle.addClass('borderful'); 	G_ellipse.removeClass('borderful'); Box_show_ellipse.css('opacity','0.2');		} 
-			else {								G_circle.removeClass('borderful'); 	G_ellipse.addClass('borderful'); 	Box_show_ellipse.css('opacity','1');		}
+			if(Circle_Ellipse 	== 'circle'){ 	G_circle.prop("checked", true); 	G_circle.addClass('borderful'); 	G_ellipse.removeClass('borderful'); Box_show_ellipse.css('opacity','0.2');		} 
+			else {								G_ellipse.prop("checked", true); 	G_circle.removeClass('borderful'); 	G_ellipse.addClass('borderful'); 	Box_show_ellipse.css('opacity','1');		}
 			
 			//radial value option
 			R_circle.val(	Size_Circle);
