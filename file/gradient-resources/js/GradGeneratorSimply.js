@@ -259,7 +259,33 @@ var
 //°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
 
 
-
+	//ERROR AUTO HEX SIMBOL # | ELIMINA ERRORE "cancelletto" auto generato del jquery iris-wpColorPicker.
+    	// questa azione la fa già la funzione -> Color_Piker_setting, ma la farebbe dopo che il selettore pesca i valori del colore.
+    function Grad_wpcolorpiker_error_autoHEX(ID_Opt_color){
+	  	var N_Color_total = opti.max_color;
+	    for(var i=1; i<N_Color_total+1; i++){ 
+	        var Box_previw    = jQuery(ID_Opt_color+i).parent('.wp-picker-input-wrap').parent('.wp-picker-container').first().find('.wp-color-result span');
+	            ValuePikerHex = jQuery(ID_Opt_color+i).val();
+	            ValueNewRgba  = ValuePikerHex.replace('#rgba','rgba');  //necessario che replace sia richiamato come variabile se no non funge
+	            ValueNewRgb   = ValuePikerHex.replace('#rgb' ,'rgb'); 
+	            
+	            if( jQuery(ID_Opt_color+i).val().indexOf('#rgba') >= 0  ){ 
+	                jQuery(ID_Opt_color+i).val(ValueNewRgba);
+	                Box_previw.css('background',ValueNewRgba);
+	            }
+	            if( jQuery(ID_Opt_color+i).val().indexOf('#rgb') >= 0  ){ 
+	                jQuery(ID_Opt_color+i).val(ValueNewRgb);
+	                Box_previw.css('background',ValueNewRgb);
+	            }
+		     	// console.log('IDOP_color_'+ID_Opt_color+i);
+		     	// console.log('ValuePikerHex_'+jQuery(ID_Opt_color+i).val());
+		     	// console.log('.indexOf_#rgba_'+jQuery(ID_Opt_color+i).val().indexOf('#rgba'));
+		     	// console.log('.indexOf_#rgb_'+ jQuery(ID_Opt_color+i).val().indexOf('#rgb'));
+		     	// console.log('____________________________');
+	    } 
+	   
+	}//------------------------------------
+ 
 
 
 	//6.2 Slider  MULTI selector --------------------------
@@ -355,17 +381,7 @@ var
                                                 jQuery('.box-id-grad'+i).css('display','none');  
         }  //[7,8,9,10]
         
-        //ERROR AUTO HEX SIMBOL # | ELIMINA ERRORE "cancelletto" auto generato del jquery iris-wpColorPicker.
-        // questa azione la fa già la funzione -> Color_Piker_setting, ma la farebbe dopo che il selettore pesca i valori del colore.
-        for(var i=1; i<N_Color+1; i++){ 
-            var Box_previw    = jQuery(ID_Opt_color+i).parent('.wp-picker-input-wrap').parent('.wp-picker-container').first().find('.wp-color-result span');
-                ValuePikerHex = jQuery(ID_Opt_color+i).val();
-                ValueNewRgba  = ValuePikerHex.replace('#rgba','rgba');  //necessario che replace sia richiamato come variabile se no non funge
-                if( jQuery(ID_Opt_color+i).val().indexOf('#rgba') >= 0  ){ 
-                    jQuery(ID_Opt_color+i).val(ValueNewRgba);
-                    Box_previw.css('background',ValueNewRgba);
-                }
-        } //------------------------------------
+  
         
         //Slider ---------------
         Slider_MultiSelector(SliderID,opti.slider_min,opti.slider_max,opti.slider_step,array_NActual,Array_Pos,Array_Col,ID_Opt_color,ID_Opt_pos);  
@@ -601,6 +617,8 @@ var
 
 
 
+	//Test ERROR wp color piker -> # HEX | testa se c'è un #rgba  e #rgb presente e lo toglie
+	Grad_wpcolorpiker_error_autoHEX(opti.colorsID);
 
 
 	//size preview box
