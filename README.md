@@ -210,7 +210,29 @@ In the child theme example, I recreated a simple page in the theme admin menu. Y
         //''''''''''''''''''''''''''''''''''''''''''''
         Spinner_inputnumber('.input-number-spinner','.input-number-plus','.input-number-minus');
         //''''''''''''''''''''''''''''''''''''''''''''
-     
+     	
+	 //CHANGE CLASS RADIO INPUT ON CLICK
+        //''''''''''''''''''''''''''''''''''''''''''''
+        function RadiochangeDiv(Classbox_radio) {
+		jQuery(Classbox_radio +' label').click(function(){
+			jQuery(this).parent(Classbox_radio).find('label').removeClass('borderful');
+			jQuery(this).addClass('borderful');
+		});
+	}
+	//EG ON PAGE:  RadiochangeDiv('.box-radio');
+	// DIV STYLE
+	/*	<div id="bgstyle_grad_repeat" class="box-radio">
+			<label id="repeat" class="layouts text-botton bgstyle_grad_repeat borderful" >
+			<input value="repeat"  name="hook_settings[graphtemplate]" type="radio">Ripeti</label>
+		<label id="no-repeat" class="layouts text-botton bgstyle_grad_repeat   checkedClass" >
+		<input checked="checked" value="no-repeat" name="hook_settings[graphtemplate]" type="radio">No repeat</label>
+	    </div>
+	*/
+	
+	RadiochangeDiv('.box-radio');
+        //''''''''''''''''''''''''''''''''''''''''''''
+     	
+	
           
     });
     </script>
@@ -246,7 +268,7 @@ $('.ggs-gradient-content')GradGeneratorSimply({
         sliderID_circle	: '.ggs-slidercircle-edg',
         box_show_linear : '.ggs-grad-linear-comand',
         box_show_radial : '.ggs-grad-radial-comand',
-        box_show_ellipse: '.box-graphtemplate_header_bgstyle_grad_radial_size_ellipse',
+        box_show_ellipse: '.box-bgstyle_grad_radial_size_ellipse',
         
         //content preview size
        	box_preview		:'.ggs-gradient-preview-box',
@@ -256,26 +278,27 @@ $('.ggs-gradient-content')GradGeneratorSimply({
         //icon color + - class
         icon_plus   	: '.ggs-icon-plus',
         icon_minus  	: '.ggs-icon-minus',
+	box_color_opt   : '.box-id-grad',
         
         //input condtion
-        nColorID    : '#graphtemplate_header_bgstyle_grad_color_num', //id-class input of number of color (input hidden)
-        colorsID    : '#graphtemplate_header_bgstyle_grad_color',
-        positionID  : '#graphtemplate_header_bgstyle_grad_color_pos',
+        nColorID    : '#bgstyle_grad_color_num', //id-class input of number of color (input hidden)
+        colorsID    : '#bgstyle_grad_color',
+        positionID  : '#bgstyle_grad_color_pos',
         
         //input value ID
-        linear_edg  : '#graphtemplate_header_bgstyle_grad_linear_edg',
-        r_circle    : '#graphtemplate_header_bgstyle_grad_radial_size_circle',
-        r_ellipse   : '#graphtemplate_header_bgstyle_grad_radial_size_ellipse',
-        r_horiz     : '#graphtemplate_header_bgstyle_grad_radial_pos_horiz',
-        r_vert      : '#graphtemplate_header_bgstyle_grad_radial_pos_vert',
+        linear_edg  : '#bgstyle_grad_linear_edg',
+        r_circle    : '#bgstyle_grad_radial_size_circle',
+        r_ellipse   : '#bgstyle_grad_radial_size_ellipse',
+        r_horiz     : '#bgstyle_grad_radial_pos_horiz',
+        r_vert      : '#bgstyle_grad_radial_pos_vert',
        
         //radio button
-        g_rep       : '#graphtemplate_header_bgstyle_grad_repeat #repeat',
-        g_norep     : '#graphtemplate_header_bgstyle_grad_repeat #no-repeat',
-        g_linear    : '#graphtemplate_header_bgstyle_grad_type #linear',
-        g_radial    : '#graphtemplate_header_bgstyle_grad_type #radial',
-        g_circle    : '#graphtemplate_header_bgstyle_grad_shape #circle',
-        g_ellipse   : '#graphtemplate_header_bgstyle_grad_shape #ellipse',
+        g_rep       : '#bgstyle_grad_repeat #repeat',
+        g_norep     : '#bgstyle_grad_repeat #no-repeat',
+        g_linear    : '#bgstyle_grad_type #linear',
+        g_radial    : '#bgstyle_grad_type #radial',
+        g_circle    : '#bgstyle_grad_shape #circle',
+        g_ellipse   : '#bgstyle_grad_shape #ellipse',
 	//option
 	slider_min 	: 0, //sliderbar range value min
 	slider_max 	: 100, //sliderbar range value max
