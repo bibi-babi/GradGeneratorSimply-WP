@@ -201,7 +201,29 @@ function theme_page_fun() {
         Spinner_inputnumber('.input-number-spinner','.input-number-plus','.input-number-minus');
         //''''''''''''''''''''''''''''''''''''''''''''
      
-          
+           //CHANGE CLASS RADIO INPUT ON CLICK
+        //''''''''''''''''''''''''''''''''''''''''''''
+        function RadiochangeDiv(Classbox_radio) {
+            jQuery(Classbox_radio +' label').click(function(){
+                jQuery(this).parent(Classbox_radio).find('label').removeClass('borderful');
+                jQuery(this).addClass('borderful');
+            });
+        }
+        //EG ON PAGE:  RadiochangeDiv('.box-radio');
+        // DIV STYLE
+        /*	<div id="bgstyle_grad_repeat" class="box-radio">
+                <label id="repeat" class="layouts text-botton bgstyle_grad_repeat borderful" >
+                <input value="repeat"  name="hook_settings[graphtemplate]" type="radio">Ripeti</label>
+            <label id="no-repeat" class="layouts text-botton bgstyle_grad_repeat   checkedClass" >
+            <input checked="checked" value="no-repeat" name="hook_settings[graphtemplate]" type="radio">No repeat</label>
+            </div>
+        */
+
+        RadiochangeDiv('.box-radio');
+    //''''''''''''''''''''''''''''''''''''''''''''
+     	
+	
+        
     });
     </script>
 
