@@ -144,7 +144,7 @@ function radio_checkbox($id_option,$variabile_theme,$hookIDsection,$itemsArray, 
             echo "<label id='$item' class='layouts text-botton $id_option  $checkedClass' $LabelS><input ";
             if( $conditionIsset == 'active'){  checked(isset($variabile_theme[$id_option]),$item);  } else {  checked($variabile_theme[$id_option],$item);  }
                 //checked($variabile_theme[$id_option],$item);
-            echo " value='$item' onClick=\"RadiochangeDiv('$item','$id_option');\" name='akana_theme_".$hookIDsection."_hook_settings[$id_option]' type='radio' />
+            echo " value='$item' name='akana_theme_".$hookIDsection."_hook_settings[$id_option]' type='radio' />
             $itemsNameArray[$id]
             </label>";
         }
@@ -163,12 +163,11 @@ function radio_checkbox($id_option,$variabile_theme,$hookIDsection,$itemsArray, 
 /* 1_ $id_option            [$variable_idoption | 'section_option1']    => nome identificativo della opzione creata
  * 2_ $variabile_theme,     [$variable_theme]                           => variabile con il nome della sezione di opzioni associata al hook da registrare nel database
  * 3_ $hookIDsection,       [$variable_hookIDsection]                   => variabile sezione hook in cui registrare nel database l'opzione
- * 4_$tooltip               ['' | $tooltip = tooltip_content ( __('testo.','lang_AkanaT_option'),'', '','onvariable');   ]  -> o lasciare vuoto per ottenere il testo di default o inserire una variabile che riporta un codice in tooltip_content
- * 5_$opacity_condition     ['active' | '']                             => attiva l'opzione per cui rgba se attivo con del testo fa opacizzare il blocco colore, altrimenti entrambi i blocchi rimangono ben visibili 
- * 
  */ 
-//                              1           2               3               4                    5
+//                          1           2               3             
 function color_gradient($id_option,$variabile_theme,$hookIDsection){
+   $THEME_ID_hook= "akana_theme_";
+     
     //Id_Option    
     $number_color               = $id_option.'_grad_color_num';
     
@@ -196,14 +195,14 @@ function color_gradient($id_option,$variabile_theme,$hookIDsection){
     $radial_radialpos_vert      = $id_option.'_grad_radial_pos_vert';
      
  
-    echo '<div id="ggs-gradient-content" class="ggs-gradient-content" >';
+    echo '<div id="'.$id_option.'-ggs-gradient-content" class="'.$id_option.'-ggs-gradient-content ggs-gradient-content" >';
         //PREVIEW ------------ 
         echo '<div class="ggs-gradient-preview-box">
                   <div class="previw-box">
                       <div class="gradient-prev" style="display: inline-block;" >'.__('Preview Gradient','lang_AkanaT_option').'</div>
                       <div class="gradient-prev-icon">
-                          <i id="ggs-full-view-prev" class="ggs-full-view-prev dashicons dashicons-editor-expand"></i>
-                          <i id="ggs-fullback-view-prev" class="ggs-fullback-view-prev dashicons dashicons-editor-contract"></i>
+                          <i id="'.$id_option.'-ggs-full-view-prev" class="ggs-full-view-prev dashicons dashicons-editor-expand"></i>
+                          <i id="'.$id_option.'-ggs-fullback-view-prev" class="ggs-fullback-view-prev dashicons dashicons-editor-contract"></i>
                       </div>
                       <div class="ggs-gradient-preview box-gradient"></div>
                   </div>
@@ -213,11 +212,11 @@ function color_gradient($id_option,$variabile_theme,$hookIDsection){
         echo '<div class="ggs-gradient-commands" >';
             
             // NUMBER COLOR hiden box
-            echo '<input style="display: none;" id="'.$number_color.'" name="akana_theme_'.$hookIDsection.'_hook_settings['.$number_color.']" type="number" max="10" min="2" step="1" class="input-number-spinner-input input-'.$number_color.'"  value="'.$variabile_theme[$number_color].'" />'; 
+            echo '<input style="display: none;" id="'.$number_color.'" name="'.$THEME_ID_hook.$hookIDsection.'_hook_settings['.$number_color.']" type="number" max="10" min="2" step="1" class="input-number-spinner-input input-'.$number_color.'"  value="'.$variabile_theme[$number_color].'" />'; 
                 
             
             //sidebar slider -----------------------------------------------
-            echo '<div class="box-slider" style="max-width: 90%;margin: auto;"><div id="ggs-slider-multielement" class="ggs-slider-multielement slider-bar-content  slider-bar-gradient"></div></div>';    
+            echo '<div class="box-slider" style="max-width: 90%;margin: auto;"><div id="'.$id_option.'-ggs-slider-multielement" class="ggs-slider-multielement slider-bar-content  slider-bar-gradient"></div></div>';    
             echo '<br/><br/>';
             echo '<div style="display: inline-block; max-width: 20%; vertical-align: middle; min-width: 100px;">';           
             echo '<h5  class="title-sub-box-normal" style="margin-right: 10px;">'.__('Colors','lang_AkanaT_option').'</h5>';
@@ -225,7 +224,7 @@ function color_gradient($id_option,$variabile_theme,$hookIDsection){
                              .__('Come colori potete scegliere un colore generico, un colore semi trasparente o direttamente una trasparenza completa (portate la barra di trasparenza alpha completamente a 0)','lang_AkanaT_option').'<br/>'
                              .__('Il posizionamento numerico può essere elaborato anche con la barra slider, invece di unsare il selettore numerico.','lang_AkanaT_option'),'', '', '' );
             echo '</div>';
-            echo '<div style="display: inline-block; width: 80%; vertical-align: middle;">';      
+            echo '<div class="box-ggs-colorlist" style="display: inline-block; width: 80%; vertical-align: middle;">';      
                 $number_ray_base = array(1,2,3,4,5,6,7,8,9,10);
                 // $number_ray =  array();
                 // foreach (range(1, $variabile_theme[$number_color]) as $n) { array_push($number_ray , $n); }
@@ -238,8 +237,8 @@ function color_gradient($id_option,$variabile_theme,$hookIDsection){
                         input_number(${'grad_color_pos'.$color},$variabile_theme,$hookIDsection,'%','ggs-input-number input-color-grad-seq','0','100','1','right','','vertical-align: top; background: #E4E4E4;','','');
                     echo '</div>';
                 }
-                echo '<i id="ggs-icon-minus" class="ggs-icon-minus fa fa-minus c_pointer" style="margin: 0 2% 0 1%;"></i>';
-                echo '<i id="ggs-icon-plus" class="ggs-icon-plus fa fa-plus c_pointer" style=" "></i>';
+                echo '<i id="'.$id_option.'-ggs-icon-minus" class="ggs-icon-minus fa fa-minus c_pointer" style="margin: 0 2% 0 1%;"></i>';
+                echo '<i id="'.$id_option.'-ggs-icon-plus" class="ggs-icon-plus fa fa-plus c_pointer" style=" "></i>';
             echo '</div>'; 
             echo '<br/><br/>';
             // POSITION------------------------    
@@ -258,7 +257,7 @@ function color_gradient($id_option,$variabile_theme,$hookIDsection){
                 echo '<div class="ggs-grad-linear-comand grad-linear-box" style="text-align: center; min-height: 150px; min-width: 50%;" >';
                     echo '<h5  class="title-sub-box-normal"  style="font-weight: 600; margin-right: 5%; display: inline-block; vertical-align: middle; text-align: left;">'.__('Direction','lang_AkanaT_option').'</h5>';
                     echo '<div id="slider-'.$linear_edg.'" class="ggs-slidercircle-edg" style="display: inline-block; vertical-align: middle;"></div>'; //input class
-                    echo '<input id="'.$linear_edg.'" name="akana_theme_'.$hookIDsection.'_hook_settings['.$linear_edg.']" type="hidden"  size="3"  class="input_eggNum"  value="'.$variabile_theme[$linear_edg].'" /> ';
+                    echo '<input id="'.$linear_edg.'" name="'.$THEME_ID_hook.$hookIDsection.'_hook_settings['.$linear_edg.']" type="hidden"  size="3"  class="input_eggNum"  value="'.$variabile_theme[$linear_edg].'" /> ';
                 echo '</div>';
                 //RADIAL -------------
                 echo '<div class="ggs-grad-radial-comand grad-radial-box" style="text-align: left; min-height: 150px; min-width: 50%;" >';
@@ -266,6 +265,7 @@ function color_gradient($id_option,$variabile_theme,$hookIDsection){
                     radio_checkbox($radial_shape,$variabile_theme,$hookIDsection,$RAD_radial_shape,$RAD_radial_shape_Name,'','min-width: 60px;','');
                     tooltip_content (__('Scegli se il raggio del radial deve avere una forma circolare (larghezza e altezza uguale) o una forma ovale (con le due misure differenti)','lang_AkanaT_option')   );
                     echo '<br/>';
+                    
                     echo '<div class="box-'.$radial_radialsize_circle.'">';
                         echo '<h5 class="title-sub-box-minwid-125" style="min-width: 150px; height: 30px; line-height: 30px; margin: 0 0 8px 0;vertical-align: top;">'.__('Size circle','lang_AkanaT_option').'</h5>';
                         input_number($radial_radialsize_circle,$variabile_theme,$hookIDsection,'px','ggs-input-number ggs-input-circle','0','','1','right','active-stylus','','width: 50px; text-align: center;','');
@@ -289,7 +289,9 @@ function color_gradient($id_option,$variabile_theme,$hookIDsection){
                         input_number($radial_radialpos_vert,$variabile_theme,$hookIDsection,'%','ggs-input-number input-color-grad-seq','','','1','right','active-stylus','vertical-align: middle;','width: 50px; text-align: center;','');
                         tooltip_content (__('Il valore minimo non può scendere sotto lo 0. Scegliere la posizione verticale rispetto al contenitore del centro del cerchio/ellisse.','lang_AkanaT_option')   );
                     echo '</div>';
-
+                    
+                    
+                    
                 echo '</div>';
             
             echo '</div>';//box right-----------------------
@@ -313,20 +315,61 @@ function color_gradient($id_option,$variabile_theme,$hookIDsection){
         echo '</div>'; //ggs-gradient-exemple
         //-----------------------------
             
-    echo '</div>'; //ggs-gradient-content
+    echo '</div>'; //'.$id_option.'ggs-gradient-content
     
     //script -----------------------------------------
     ?><script> jQuery(document).ready(function($){
-
+            var Primary_BOX  = '.<?php echo $id_option;?>-ggs-gradient-content';
             //previw full screen, normal screen
-            $('.ggs-full-view-prev').click(function(){      $('.ggs-gradient-preview-box').addClass('ggs-preview-fullbox');     $('.ggs-full-view-prev').css('display','none');  $('.ggs-fullback-view-prev').css('display','block');    });  
-            $('.ggs-fullback-view-prev').click(function(){  $('.ggs-gradient-preview-box').removeClass('ggs-preview-fullbox');  $('.ggs-full-view-prev').css('display','block'); $('.ggs-fullback-view-prev').css('display','none');     });  
+            $(Primary_BOX+' .ggs-full-view-prev').click(function(){      $(Primary_BOX+' .ggs-gradient-preview-box').addClass('ggs-preview-fullbox');     $(Primary_BOX+' .ggs-full-view-prev').css('display','none');  $(Primary_BOX+' .ggs-fullback-view-prev').css('display','block');    });  
+            $(Primary_BOX+' .ggs-fullback-view-prev').click(function(){  $(Primary_BOX+' .ggs-gradient-preview-box').removeClass('ggs-preview-fullbox');  $(Primary_BOX+' .ggs-full-view-prev').css('display','block'); $(Primary_BOX+' .ggs-fullback-view-prev').css('display','none');     });  
             //--------------------
             
             //load gradie comand box
-            $('.ggs-gradient-content').GradGeneratorSimply();  
+           
+   
+        $(Primary_BOX).GradGeneratorSimply({
+            box_content     : Primary_BOX,
+            previewID       : Primary_BOX+' .ggs-gradient-preview',
+            sliderID        : Primary_BOX+' .ggs-gradient-commands .box-slider .ggs-slider-multielement',
+            sliderID_circle : Primary_BOX+' .ggs-gradient-commands .box-right .ggs-grad-linear-comand .ggs-slidercircle-edg',
+            box_show_linear : Primary_BOX+' .ggs-gradient-commands .box-right .ggs-grad-linear-comand',
+            box_show_radial : Primary_BOX+' .ggs-gradient-commands .box-right .ggs-grad-radial-comand',
+            box_show_ellipse: Primary_BOX+' .box-<?php echo $id_option;?>_grad_radial_size_ellipse',
+        
+            //content preview size
+            box_preview : Primary_BOX+' .ggs-gradient-preview-box',
+            //icon color + - class
+            icon_plus       : Primary_BOX+' .box-ggs-colorlist .ggs-icon-plus',
+            icon_minus      : Primary_BOX+' .box-ggs-colorlist .ggs-icon-minus',
+            box_color_opt   : Primary_BOX+' .box-id-grad',
+            
+            //input condtion
+            nColorID    : '#<?php echo $id_option;?>_grad_color_num', //id-class input of number of color (input hidden)
+            colorsID    : '#<?php echo $id_option;?>_grad_color',
+            positionID  : '#<?php echo $id_option;?>_grad_color_pos',
+            
+            //input value ID
+            linear_edg  : '#<?php echo $id_option;?>_grad_linear_edg',
+            r_circle    : '#<?php echo $id_option;?>_grad_radial_size_circle',
+            r_ellipse   : '#<?php echo $id_option;?>_grad_radial_size_ellipse',
+            r_horiz     : '#<?php echo $id_option;?>_grad_radial_pos_horiz',
+            r_vert      : '#<?php echo $id_option;?>_grad_radial_pos_vert',
+           
+            //radio button
+            g_rep       : '#<?php echo $id_option;?>_grad_repeat #repeat',
+            g_norep     : '#<?php echo $id_option;?>_grad_repeat #no-repeat',
+            g_linear    : '#<?php echo $id_option;?>_grad_type #linear',
+            g_radial    : '#<?php echo $id_option;?>_grad_type #radial',
+            g_circle    : '#<?php echo $id_option;?>_grad_shape #circle',
+            g_ellipse   : '#<?php echo $id_option;?>_grad_shape #ellipse',
+              
+            //exemple value
+            example_cont_class: Primary_BOX+' .ggs-gradient-exemple .ggs-gradient-exemple-boxs',//Primary_BOX+' .ggs-gradient-exemple-boxs',
+            
+    });   
+   
             //--------------------
-          
    
     });</script><?php
  
