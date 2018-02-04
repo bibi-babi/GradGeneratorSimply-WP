@@ -6,13 +6,13 @@
 // LOAD PLUGIN:  
 /*
  	$('.ggs-gradient-content').GradGeneratorSimply({
-	   
+	    box_content     : '.ggs-gradient-content',
 	   	previewID       : '.ggs-gradient-preview',
  		sliderID 		: '.ggs-slider-multielement',
         sliderID_circle	: '.ggs-slidercircle-edg',
         box_show_linear : '.ggs-grad-linear-comand',
         box_show_radial : '.ggs-grad-radial-comand',
-        box_show_ellipse: '.box-graphtemplate_header_bgstyle_grad_radial_size_ellipse',
+        box_show_ellipse: '.box-bgstyle_grad_radial_size_ellipse',
         
         //content preview size
        	box_preview		 	:'.ggs-gradient-preview-box',
@@ -22,26 +22,30 @@
         //icon color + - class
         icon_plus   	: '.ggs-icon-plus',
         icon_minus  	: '.ggs-icon-minus',
+        box_color_opt	: '.box-id-grad',
         
         //input condtion
-        nColorID    : '#graphtemplate_header_bgstyle_grad_color_num', //id-class input of number of color (input hidden)
-        colorsID    : '#graphtemplate_header_bgstyle_grad_color',
-        positionID  : '#graphtemplate_header_bgstyle_grad_color_pos',
+        nColorID    : '#bgstyle_grad_color_num', //id-class input of number of color (input hidden)
+        colorsID    : '#bgstyle_grad_color',
+        positionID  : '#bgstyle_grad_color_pos',
         
         //input value ID
-        linear_edg  : '#graphtemplate_header_bgstyle_grad_linear_edg',
-        r_circle    : '#graphtemplate_header_bgstyle_grad_radial_size_circle',
-        r_ellipse   : '#graphtemplate_header_bgstyle_grad_radial_size_ellipse',
-        r_horiz     : '#graphtemplate_header_bgstyle_grad_radial_pos_horiz',
-        r_vert      : '#graphtemplate_header_bgstyle_grad_radial_pos_vert',
+        linear_edg  : '#bgstyle_grad_linear_edg',			//option save on DB
+        r_circle    : '#bgstyle_grad_radial_size_circle',	//option save on DB
+        r_ellipse   : '#bgstyle_grad_radial_size_ellipse',	//option save on DB
+        r_horiz     : '#bgstyle_grad_radial_pos_horiz',		//option save on DB
+        r_vert      : '#bgstyle_grad_radial_pos_vert',		//option save on DB
        
         //radio button
-        g_rep       : '#graphtemplate_header_bgstyle_grad_repeat #repeat',
-        g_norep     : '#graphtemplate_header_bgstyle_grad_repeat #no-repeat',
-        g_linear    : '#graphtemplate_header_bgstyle_grad_type #linear',
-        g_radial    : '#graphtemplate_header_bgstyle_grad_type #radial',
-        g_circle    : '#graphtemplate_header_bgstyle_grad_shape #circle',
-        g_ellipse   : '#graphtemplate_header_bgstyle_grad_shape #ellipse',
+        g_radio_select : 'borderful',	
+        g_radio_check  : 'checkedClass', 
+        g_rep       : '#bgstyle_grad_repeat #repeat',		//option save on DB
+        g_norep     : '#bgstyle_grad_repeat #no-repeat',	//option save on DB
+        g_linear    : '#bgstyle_grad_type #linear',			//option save on DB
+        g_radial    : '#bgstyle_grad_type #radial',			//option save on DB
+        g_circle    : '#bgstyle_grad_shape #circle',		//option save on DB
+        g_ellipse   : '#bgstyle_grad_shape #ellipse',		//option save on DB
+
 		//option
 		slider_min 	: 0, //sliderbar range value min
 		slider_max 	: 100, //sliderbar range value max
@@ -114,21 +118,49 @@
  */
 
 
+
+
+
+
+//if dont have RADIO CLASS CHANGE -> use this function 
+//::::::::::::::::::::::::::::::::::::::::::::::
+// function RadiochangeDiv(Classbox_radio) {
+	// jQuery(Classbox_radio +' label').click(function(){
+		// jQuery(this).parent(Classbox_radio).find('label').removeClass('borderful');
+		// jQuery(this).addClass('borderful');
+	// });
+// }
+//EG ON PAGE:  RadiochangeDiv('.box-radio');
+// DIV STYLE
+/*	<div id="graphtemplate_footer_bgstyle_grad_repeat" class="box-radio">
+ 		<label id="repeat" class="layouts text-botton graphtemplate_footer_bgstyle_grad_repeat borderful" >
+    		<input value="repeat"  name="hook_settings[graphtemplate]" type="radio">Ripeti</label>
+    	<label id="no-repeat" class="layouts text-botton graphtemplate_footer_bgstyle_grad_repeat   checkedClass" >
+    	<input checked="checked" value="no-repeat" name="hook_settings[graphtemplate]" type="radio">No repeat</label>
+    </div>
+*/
+//::::::::::::::::::::::::::::::::::::::::::::::
+
+
+
+
+
+
+
 //INFORMATION: 	https://learn.jquery.com/plugins/basic-plugin-creation/
 //				https://learn.jquery.com/plugins/advanced-plugin-concepts/
 
 
 jQuery.fn.GradGeneratorSimply = function(opti){
-	opti = jQuery.extend({
+	opti = jQuery.extend({ //https://api.jquery.com/jquery.extend/
  		//content
+ 		box_content     : '.ggs-gradient-content',
 	 	previewID       : '.ggs-gradient-preview',
  		sliderID 		: '.ggs-slider-multielement',
         sliderID_circle	: '.ggs-slidercircle-edg',
         box_show_linear : '.ggs-grad-linear-comand',
         box_show_radial : '.ggs-grad-radial-comand',
-        
-        box_show_ellipse: '.box-graphtemplate_header_bgstyle_grad_radial_size_ellipse',
-        
+        box_show_ellipse: '.box_bgstyle_grad_radial_size_ellipse', 
         
         //content preview size
        	box_preview		 	:'.ggs-gradient-preview-box',
@@ -138,26 +170,30 @@ jQuery.fn.GradGeneratorSimply = function(opti){
         //icon color + - class
         icon_plus   	: '.ggs-icon-plus',
         icon_minus  	: '.ggs-icon-minus',
+        box_color_opt	: '.box-id-grad',
+        //.wp-picker-input-wrap .wp-picker-container .wp-color-result span
         
         //input condtion
-        nColorID    : '#graphtemplate_header_bgstyle_grad_color_num', //id-class input of number of color (input hidden)
-        colorsID    : '#graphtemplate_header_bgstyle_grad_color',
-        positionID  : '#graphtemplate_header_bgstyle_grad_color_pos',
+        nColorID    : '#bgstyle_grad_color_num', //id-class input of number of color (input hidden)
+        colorsID    : '#bgstyle_grad_color',
+        positionID  : '#bgstyle_grad_color_pos',
         
         //input value ID
-        linear_edg  : '#graphtemplate_header_bgstyle_grad_linear_edg',
-        r_circle    : '#graphtemplate_header_bgstyle_grad_radial_size_circle',
-        r_ellipse   : '#graphtemplate_header_bgstyle_grad_radial_size_ellipse',
-        r_horiz     : '#graphtemplate_header_bgstyle_grad_radial_pos_horiz',
-        r_vert      : '#graphtemplate_header_bgstyle_grad_radial_pos_vert',
+        linear_edg  : '#bgstyle_grad_linear_edg',			//option save on DB
+        r_circle    : '#bgstyle_grad_radial_size_circle',	//option save on DB
+        r_ellipse   : '#bgstyle_grad_radial_size_ellipse',	//option save on DB
+        r_horiz     : '#bgstyle_grad_radial_pos_horiz',		//option save on DB
+        r_vert      : '#bgstyle_grad_radial_pos_vert',		//option save on DB
        
         //radio button
-        g_rep       : '#graphtemplate_header_bgstyle_grad_repeat #repeat',
-        g_norep     : '#graphtemplate_header_bgstyle_grad_repeat #no-repeat',
-        g_linear    : '#graphtemplate_header_bgstyle_grad_type #linear',
-        g_radial    : '#graphtemplate_header_bgstyle_grad_type #radial',
-        g_circle    : '#graphtemplate_header_bgstyle_grad_shape #circle',
-        g_ellipse   : '#graphtemplate_header_bgstyle_grad_shape #ellipse',
+        g_radio_select : 'borderful',	//class active on radio input or radio label to report is checked from user but not saved on DB| classe che appare sul radio per dire che è stato checked dal utente ma non salvato in db
+        g_radio_check  : 'checkedClass', //class active on radio input or radio label to report is checked from DB| classe che appare sul radio per dire che è checked dal caricamento
+        g_rep       : '#bgstyle_grad_repeat #repeat',		//option save on DB
+        g_norep     : '#bgstyle_grad_repeat #no-repeat',	//option save on DB
+        g_linear    : '#bgstyle_grad_type #linear',			//option save on DB
+        g_radial    : '#bgstyle_grad_type #radial',			//option save on DB
+        g_circle    : '#bgstyle_grad_shape #circle',		//option save on DB
+        g_ellipse   : '#bgstyle_grad_shape #ellipse',		//option save on DB
 		//option
 		slider_min 	: 0, //sliderbar range value min
 		slider_max 	: 100, //sliderbar range value max
@@ -230,38 +266,41 @@ jQuery.fn.GradGeneratorSimply = function(opti){
  
       
 //VARIABLE ................................
-    //content
-var 
-    Box_show_ellipse= jQuery(opti.box_show_ellipse);
-    
-    
-    //input value ID
-    Linear_edg  = jQuery(opti.linear_edg);
-    R_circle    = jQuery(opti.r_circle);
-    R_ellipse   = jQuery(opti.r_ellipse);
-    R_horiz     = jQuery(opti.r_horiz);
-    R_vert      = jQuery(opti.r_vert);
-   
-    //radio button
-    G_rep       	= jQuery(opti.g_rep);
-    G_rep_input 	= jQuery(opti.g_rep+' input');
-    G_norep     	= jQuery(opti.g_norep);
-    G_norep_input	= jQuery(opti.g_norep+' input');
-    G_linear    	= jQuery(opti.g_linear);
-    G_linear_input 	= jQuery(opti.g_linear+' input');
-    G_radial    	= jQuery(opti.g_radial);
-    G_radial_input 	= jQuery(opti.g_radial+' input');
-    G_circle    	= jQuery(opti.g_circle);
-    G_circle_input 	= jQuery(opti.g_circle+' input');
-    G_ellipse   	= jQuery(opti.g_ellipse);
-    G_ellipse_input	= jQuery(opti.g_ellipse+' input');
+	//se viene usato in più sistemi nella stessa pagina è impossibile usare le variabili pubbliche qui. Devono essere variabili che rispechiano opt di quella specifica funzione.
+	// altrimente prende l'ultma variabile. Per questo si è costruita una seconda variabile con i dati delle varabili che mi servono
 
-    
+var TVar = undefined;
+ 	TVar = jQuery.extend({ 
+ 		//content
+		Box_show_ellipse : jQuery(opti.box_show_ellipse), //TVar.Box_show_ellipse
+	    //input value ID
+	    Linear_edg  : jQuery(opti.linear_edg),	 //TVar.Linear_edg
+	    R_circle    : jQuery(opti.r_circle),
+	    R_ellipse   : jQuery(opti.r_ellipse),
+	    R_horiz     : jQuery(opti.r_horiz),
+	    R_vert      : jQuery(opti.r_vert),
+	   
+	    //radio button
+	    G_rep       	: jQuery(opti.g_rep),
+	    G_rep_input 	: jQuery(opti.g_rep+' input'),
+	    G_norep     	: jQuery(opti.g_norep),
+	    G_norep_input	: jQuery(opti.g_norep+' input'),
+	    G_linear    	: jQuery(opti.g_linear),
+	    G_linear_input 	: jQuery(opti.g_linear+' input'),
+	    G_radial    	: jQuery(opti.g_radial),
+	    G_radial_input 	: jQuery(opti.g_radial+' input'),
+	    G_circle    	: jQuery(opti.g_circle),
+	    G_circle_input 	: jQuery(opti.g_circle+' input'),
+	    G_ellipse   	: jQuery(opti.g_ellipse),
+	    G_ellipse_input	: jQuery(opti.g_ellipse+' input'),
+ 	
+ 	}, TVar);
 //....................................
 
+
+
+
   
- 
- 
 //°°°°°°°°°°°°°FUNCTION °°°°°°°°°°°°°°°°°°°°°
 //°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
 
@@ -290,9 +329,9 @@ var
 		     	// console.log('.indexOf_#rgb_'+ jQuery(ID_Opt_color+i).val().indexOf('#rgb'));
 		     	// console.log('____________________________');
 	    } 
-	   
 	}//------------------------------------
  
+
 
 
 	//6.2 Slider  MULTI selector --------------------------
@@ -347,7 +386,7 @@ var
 					for ( var i = 1;  i<Array_IDColor.length+1;   i++ ) {  ArrayInputID.push(ID_input_pos+i); } //1 e +1 necessario per la sequenza dei div che inizi da 1 e non da zero
 					for ( var i = 0;  i<ui.values.length;   i++ ) { jQuery(ArrayInputID[i]).val(ui.values[i]);}
 					//active preview change
-					Grad_condRadio_changePreview (opti.previewID,opti.nColorID,opti.colorsID,opti.positionID,Linear_edg,R_circle,R_ellipse,R_horiz,R_vert,G_rep,G_norep,G_linear,G_radial,G_circle,G_ellipse);
+					Grad_condRadio_changePreview (opti.previewID,opti.nColorID,opti.colorsID,opti.positionID,TVar.Linear_edg,TVar.R_circle,TVar.R_ellipse,TVar.R_horiz,TVar.R_vert,TVar.G_rep,TVar.G_norep,TVar.G_linear,TVar.G_radial,TVar.G_circle,TVar.G_ellipse);
 					//----------------------------------------------
 		        return ui.value > minMoveValue && ui.value < maxMoveValue;
 		        
@@ -367,7 +406,7 @@ var
 	//-------------------------------------------------------------------
 	     
 
-    //Quando cambia il NUMERO MAX di elementi -------------
+    //Quando cambia il NUMERO MAX di elementi | calcolare quali box colore far vedere e quali no-------------
 	//						opti.sliderID
     function Grad_Ncolor_change(SliderID,ID_colorActive,ID_Opt_color,ID_Opt_pos){
         var handle_slider = jQuery(SliderID+' .ui-slider-handle');  
@@ -376,7 +415,7 @@ var
         var array_NActual = [], array_NHide = [], Array_Col = [], Array_Pos= [];
         for(var i=1; i<N_Color+1; i++){     var Box_color  = jQuery(ID_Opt_color+i).parent('.wp-picker-input-wrap').parent('.wp-picker-container').first().find('.wp-color-result span');
                                             array_NActual.push([i]);
-                                            jQuery('.box-id-grad'+i).css('display','inline-block');
+                                            jQuery(opti.box_color_opt+i).css('display','inline-block');
                                             
                                             if( jQuery(ID_Opt_color+i).val() != ''){ Array_Col.push( jQuery(ID_Opt_color+i).val()); }
                                             else { Array_Col.push('#ffffff'); jQuery(ID_Opt_color+i).val('#ffffff');   Box_color.css('background','#ffffff'); }
@@ -385,10 +424,20 @@ var
                                             else { Array_Pos.push('0'); jQuery(ID_Opt_pos+i).val('0'); }
         }  //[1,2,3,4,5,6]
         for(var i=N_Color+1; i<11; i++){   array_NHide.push([i]);  
-                                                jQuery('.box-id-grad'+i).css('display','none');  
+                                                jQuery(opti.box_color_opt+i).css('display','none');  
         }  //[7,8,9,10]
         
-  
+									        //CANCELLARE IN FUTURO  ERROR AUTO HEX SIMBOL # | ELIMINA ERRORE "cancelletto" auto generato del jquery iris-wpColorPicker.
+									        // questa azione la fa già la funzione -> Color_Piker_setting, ma la farebbe dopo che il selettore pesca i valori del colore.
+									        // for(var i=1; i<N_Color+1; i++){ 
+									            // var Box_previw    = jQuery(ID_Opt_color+i).parent('.wp-picker-input-wrap').parent('.wp-picker-container').first().find('.wp-color-result span');
+									                // ValuePikerHex = jQuery(ID_Opt_color+i).val();
+									                // ValueNewRgba  = ValuePikerHex.replace('#rgba','rgba');  //necessario che replace sia richiamato come variabile se no non funge
+									                // if( jQuery(ID_Opt_color+i).val().indexOf('#rgba') >= 0  ){ 
+									                    // jQuery(ID_Opt_color+i).val(ValueNewRgba);
+									                    // Box_previw.css('background',ValueNewRgba);
+									                // }
+									        // } //------------------------------------
         
         //Slider ---------------
         Slider_MultiSelector(SliderID,opti.slider_min,opti.slider_max,opti.slider_step,array_NActual,Array_Pos,Array_Col,ID_Opt_color,ID_Opt_pos);  
@@ -400,6 +449,9 @@ var
         // console.log('array_pos_'+Array_Pos);
         // console.log('ID_Opt_color_'+ID_Opt_color);
         // console.log('ID_Opt_pos_'+ID_Opt_pos);
+        // console.log('ID_Opt_pos_box visible-not-visible:::'+opti.box_color_opt);
+        
+        
     }
     
     //BUTTON PLUS MINUS ACTIVATION | attiva disattiva pulsanti di aggiunta colore 
@@ -484,6 +536,7 @@ var
         }  //[1,2,3,4,5,6]
         for ( var i = 0;  i<Array_Col.length;   i++ ) { ArrayInputID_COL.push(Array_Col[i]); } //array dei colori da aggiungere
         handle_slider.each(function(index) { jQuery(this).css('background',ArrayInputID_COL[index]); }); //per ogni span inserire il colore nell'ordine 0,1,2, ecc
+    
     }
     
     //FUNCTION POS CHANGE -------------------
@@ -499,7 +552,7 @@ var
     }
 
     
-    //CHANGE PREVIEW  ----------------------
+    //CHANGE PREVIEW  BOX ----------------------
     				           // opti.previewID | opti.nColorID | opti.colorsID | opti.positionID
     function Grad_previw_css_box (PreviewID,NColorID,ColorsID,PositionID,G_EDG,G_size1,G_size2,G_hoz,G_vert,PR_Rep,PR_Type,PR_shape){
         var N_Color       = Number(jQuery(NColorID).val());
@@ -531,7 +584,7 @@ var
         
         jQuery(PreviewID).css('background',SingleBg);  // old browser
         if(PR_Type == 'linear'){ //LINEAR ------------------------  
-            if(PR_Rep == 'repeat' ){ 
+        	if(PR_Rep == 'repeat' ){ 
                 jQuery(PreviewID).css('background','repeating-linear-gradient('+G_EDG+'deg, '+Array_col_pos +')'); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
                 jQuery(PreviewID).css('background','-webkit-repeating-linear-gradient('+G_EDG+'deg, '+Array_col_pos+')');  /* Chrome10-25,Safari5.1-6 */
                 jQuery(PreviewID).css('background','-moz-repeating-linear-gradient('+G_EDG+'deg, '+Array_col_pos+')'); // For Firefox 3.6 to 15 */
@@ -573,98 +626,93 @@ var
          // console.log('G_size2: '+G_size2);
          // console.log('G_hoz: '+G_hoz);
          // console.log('G_vert: '+G_vert);
-   
-    }    
+   		console.log('Grad_previw_css_box');
+    }    // Grad_previw_css_box -------------------------------------------------------
     
-    //CONDTION RADIO CHECKED + CHANGE PREVIW
+    
+    
+    //CONDITION RADIO CHECKED + CHANGE PREVIW
 								//opti.previewID | opti.nColorID | opti.colorsID | opti.positionID
-    function Grad_condRadio_changePreview (PreviewID,NColorID,ColorsID,PositionID,Linear_edg,R_circle,R_ellipse,R_horiz,R_vert,G_rep,G_norep,G_linear,G_radial,G_circle,G_ellipse){
-        var G_EDG  = Linear_edg .val();
+    function Grad_condRadio_changePreview (PreviewID,NColorID,ColorsID,PositionID,GET_Linear_edg,GET_R_circle,GET_R_ellipse,GET_R_horiz,GET_R_vert,GET_G_rep,GET_G_norep,GET_G_linear,GET_G_radial,GET_G_circle,GET_G_ellipse){
+        var G_EDG  = GET_Linear_edg.val();
+        
         //condition val ecist
-        if( R_circle.val()  != ''){ var G_size1 =  R_circle.val(); } else { var G_size1 = '20'; R_circle.val('20');  }
-        if( R_ellipse.val() != ''){ var G_size2 =  R_ellipse.val();} else { var G_size2 = '20'; R_ellipse.val('20'); }
-        if( R_horiz.val()   != ''){ var G_hoz   =  R_horiz.val();  } else { var G_hoz   = '50'; R_horiz.val('50');   }
-        if( R_vert.val()    != ''){ var G_vert  =  R_vert.val();   } else { var G_vert  = '50'; R_vert.val('50');    }
+        if( GET_R_circle.val()  != ''){ var G_size1 =  GET_R_circle.val(); } else { var G_size1 = '20'; GET_R_circle.val('20');  }
+        if( GET_R_ellipse.val() != ''){ var G_size2 =  GET_R_ellipse.val();} else { var G_size2 = '20'; GET_R_ellipse.val('20'); }
+        if( GET_R_horiz.val()   != ''){ var G_hoz   =  GET_R_horiz.val();  } else { var G_hoz   = '50'; GET_R_horiz.val('50');   }
+        if( GET_R_vert.val()    != ''){ var G_vert  =  GET_R_vert.val();   } else { var G_vert  = '50'; GET_R_vert.val('50');    }
         
         
         //repeat not repeat radio check
-        if      (   G_rep.hasClass("borderful")){           var PR_Rep = 'repeat';    }
-        else if (   G_norep.hasClass("borderful")){         var PR_Rep = 'no-repeat'; }
-        else    {   if(G_rep.hasClass("checkedClass")){     var PR_Rep = 'repeat';    } else {var PR_Rep = 'no-repeat';}        }
+        if      (   GET_G_rep.hasClass(opti.g_radio_select)){       var PR_Rep = 'repeat';    }
+        else if (   GET_G_norep.hasClass(opti.g_radio_select)){     var PR_Rep = 'no-repeat'; }
+        else    {   if(GET_G_rep.hasClass(opti.g_radio_check)){     var PR_Rep = 'repeat';    } else {var PR_Rep = 'no-repeat';}        }
         // linear or radial
-        if      (   G_linear.hasClass("borderful")){        var PR_Type= 'linear';    }
-        else if (   G_radial.hasClass("borderful")){        var PR_Type= 'radial';    }
-        else    {   if(G_linear.hasClass("checkedClass")){  var PR_Type= 'linear';    } else {var PR_Type= 'radial';   }        }
+        if      (   GET_G_linear.hasClass(opti.g_radio_select)){    var PR_Type= 'linear';    }
+        else if (   GET_G_radial.hasClass(opti.g_radio_select)){    var PR_Type= 'radial';    }
+        else    {   if(GET_G_linear.hasClass(opti.g_radio_check)){  var PR_Type= 'linear';    } else { var PR_Type= 'radial';  }        }
         // shape circle elipsse
-        if      (   G_circle.hasClass("borderful")){        var PR_shape= 'circle';   }
-        else if (   G_ellipse.hasClass("borderful")){       var PR_shape= 'ellipse';  }
-        else    {   if(G_circle.hasClass("checkedClass")){  var PR_shape= 'circle';   } else {var PR_shape= 'ellipse'; }        }
+        if      (   GET_G_circle.hasClass(opti.g_radio_select)){    var PR_shape= 'circle';   }
+        else if (   GET_G_ellipse.hasClass(opti.g_radio_select)){   var PR_shape= 'ellipse';  }
+        else    {   if(GET_G_circle.hasClass(opti.g_radio_check)){  var PR_shape= 'circle';   } else { var PR_shape= 'ellipse'; }       }
+       
         
         Grad_previw_css_box(PreviewID,NColorID,ColorsID,PositionID,G_EDG,G_size1,G_size2,G_hoz,G_vert,PR_Rep,PR_Type,PR_shape);
     }           
     
   
-  
-  
+	
   
     // Variable Function ............................
 	var Gradposchange_Callback = function() { Grad_pos_change(opti.sliderID,opti.nColorID,opti.positionID); 	};
 	var GradcondRadiochangePreview_Callback = function() {
-		Grad_condRadio_changePreview (opti.previewID,opti.nColorID,opti.colorsID,opti.positionID,Linear_edg,R_circle,R_ellipse,R_horiz,R_vert,G_rep,G_norep,G_linear,G_radial,G_circle,G_ellipse);
+		Grad_condRadio_changePreview (opti.previewID,opti.nColorID,opti.colorsID,opti.positionID,TVar.Linear_edg,TVar.R_circle,TVar.R_ellipse,TVar.R_horiz,TVar.R_vert,TVar.G_rep,TVar.G_norep,TVar.G_linear,TVar.G_radial,TVar.G_circle,TVar.G_ellipse);
   	};
   
-  
-  
-  
-  
+ 
+ 
+ 
   	            
              
 //°°°°° START PAGE  LOADING °°°°°°°°°°°°°°°°°°
-//°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+//°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
 
 
 
 	//Test ERROR wp color piker -> # HEX | testa se c'è un #rgba  e #rgb presente e lo toglie
 	Grad_wpcolorpiker_error_autoHEX(opti.colorsID);
-
+	
 
 	//size preview box
 	jQuery(opti.box_preview).css({'width': opti.box_preview_width,'height':opti.box_preview_height });
-	
-	// opti.box_preview		 	:'.ggs-gradient-preview-box',
-        // opti.box_preview_width	:'100%',
-		// opti.box_preview_height	:'150px',
-
-
-
-
+		
 
     //number of color view 
-    Grad_button_plus_minus(opti.nColorID,opti.icon_plus,opti.icon_minus);      // controll button plus-minus view | controlla se visualizzare i bottoni plus minus
+    Grad_button_plus_minus(opti.nColorID,opti.icon_plus,opti.icon_minus);           //control button plus-minus view | controlla se visualizzare i bottoni plus minus
     Grad_Ncolor_change(opti.sliderID,opti.nColorID,opti.colorsID,opti.positionID);  //control max color view | controlla quanti colori attivare
     //------------------------------------------------
     
     
     //SLIDER CIRCLE ----------------------------------
-    if( Linear_edg.val()  != ''){ RoundSlider_StarVal =  Linear_edg.val(); } else { RoundSlider_StarVal = '90';  Linear_edg.val('90');  }
-    Round_Slider(opti.sliderID_circle,Linear_edg,RoundSlider_StarVal);
+    if( TVar.Linear_edg.val() != ''){ RoundSlider_StarVal =  TVar.Linear_edg.val(); } else { RoundSlider_StarVal = '90';  TVar.Linear_edg.val('90');  }
+    Round_Slider(opti.sliderID_circle,TVar.Linear_edg,RoundSlider_StarVal);
     // ---------------------------------------------             
  
     //Preview load 
    	jQuery(document).ready( GradcondRadiochangePreview_Callback );
 
     //!importan SHOW HIDE BOX LINEAR OR RADIAL | visualizzare o no i box associati al tipo linear o radial
-    if(G_linear.hasClass("checkedClass")){  jQuery(opti.box_show_linear).css('display','block');  jQuery(opti.box_show_radial).css('display','none');   }
-    else {  								jQuery(opti.box_show_linear).css('display','none');   jQuery(opti.box_show_radial).css('display','block');  }    
+    if(TVar.G_linear.hasClass(opti.g_radio_check)){ jQuery(opti.box_show_linear).css('display','block');  jQuery(opti.box_show_radial).css('display','none');   }
+    else {  									jQuery(opti.box_show_linear).css('display','none');   jQuery(opti.box_show_radial).css('display','block');  }    
     
-    G_linear.click(function(){ jQuery(opti.box_show_linear).css('display','block');  jQuery(opti.box_show_radial).css('display','none');   });  
-    G_radial.click(function(){ jQuery(opti.box_show_linear).css('display','none');   jQuery(opti.box_show_radial).css('display','block');  });  
+    TVar.G_linear.click(function(){ jQuery(opti.box_show_linear).css('display','block');  jQuery(opti.box_show_radial).css('display','none');   });  
+    TVar.G_radial.click(function(){ jQuery(opti.box_show_linear).css('display','none');   jQuery(opti.box_show_radial).css('display','block');  });  
     
     //show hide circle or eclipse value
-    if(G_circle.hasClass("checkedClass")){ Box_show_ellipse.css('opacity','0.2');} else { Box_show_ellipse.css('opacity','1'); }    
+    if(TVar.G_circle.hasClass(opti.g_radio_check)){ TVar.Box_show_ellipse.css('opacity','0.2');} else { TVar.Box_show_ellipse.css('opacity','1'); }    
     
-    G_circle.click(function(){  Box_show_ellipse.css('opacity','0.2'); });  
-    G_ellipse.click(function(){ Box_show_ellipse.css('opacity','1'); });  
+    TVar.G_circle.click(function(){  TVar.Box_show_ellipse.css('opacity','0.2'); });  
+    TVar.G_ellipse.click(function(){ TVar.Box_show_ellipse.css('opacity','1'); });  
     //----------------------
 
 //------------------------------------------
@@ -680,36 +728,36 @@ var
     } else {                         jQuery(opti.icon_plus).css('display','inline-block');    jQuery(opti.icon_minus).css('display','inline-block'); }       
         
         
-    //change MAX number color
+    //ON CLIKC -> change MAX number color
     jQuery(opti.icon_plus).click(function(){  Grad_maxN_color_plus(opti.sliderID,opti.nColorID,opti.colorsID,opti.positionID,opti.icon_plus,opti.icon_minus);   }).click(GradcondRadiochangePreview_Callback);  
     jQuery(opti.icon_minus).click(function(){ Grad_maxN_color_minus(opti.sliderID,opti.nColorID,opti.colorsID,opti.positionID,opti.icon_plus,opti.icon_minus);  }).click(GradcondRadiochangePreview_Callback);  
     
              
     
     
-    //Previw - CLIK RADIO -> repeat,notrepeat,linear,radial,circle,ellipse------------------------
-    //Si ripete 2 volte il comando... non so perchè ! forse perchè sono nel prototipe!
-    G_rep.add(G_norep).add(G_linear).add(G_radial).add(G_circle).add(G_ellipse).click( GradcondRadiochangePreview_Callback);             
-    //---------------------------
-    //Previw - CHANGE Input value radial -> val circle, val ellipse,val horz,val vert------------------------                  
-    Linear_edg.add(R_circle).add(R_ellipse).add(R_horiz).add(R_vert).change(GradcondRadiochangePreview_Callback);
-  	Linear_edg.add(R_circle).add(R_ellipse).add(R_horiz).add(R_vert).keyup(	GradcondRadiochangePreview_Callback);
-    //---------------------------
+    //Previw - CLIK RADIO  and chang input number
+    // radio repeat, radio not-rep,  radio linear,   radio radial    ,    radio circle,    radio elips
+    TVar.G_rep.add(TVar.G_norep).add(TVar.G_linear).add(TVar.G_radial).add(TVar.G_circle).add(TVar.G_ellipse).change(function() { GradcondRadiochangePreview_Callback(); });
+	    //.bind("change keyup input") -> aggiungere ogni tipologia di cambiamento si vuole sentire nell'azione è come fare asspieme .chane .jeyup .input
+	    //change sente quando clichi i pulsanti + - e anche quando cambia input numerico con le frecce. e anche se cambi con numeri e poi clicki fuori 	
+    //  edgvalue,     size circle num,   size elips num,  size Hori position, size ver position,------------------------
+    TVar.Linear_edg.add(TVar.R_circle).add(TVar.R_ellipse).add(TVar.R_horiz).add(TVar.R_vert).bind("change",function() { GradcondRadiochangePreview_Callback(); 	});
+  	//---------------------------
     
-    //change input position  AND change Previw -------------- 
+    //Previw - COLOR POSITION NUMB(grad_color_pos1) - SLIDER :  change input position on box and slider  AND change Previw -------------- 
     for(var i=1; i<opti.max_color+1; i++){ 
-    	jQuery(opti.positionID+i).change(Gradposchange_Callback).change(GradcondRadiochangePreview_Callback );
-    	jQuery(opti.positionID+i).keyup(Gradposchange_Callback).keyup(GradcondRadiochangePreview_Callback );
+    	jQuery(opti.positionID+i).bind("keyup",function() { GradcondRadiochangePreview_Callback(); 	});
+    	//il cambio nello slider viene effettuato nei comandi dello slider.
     } 
     //---------------------------
 
-    //Input Color change  AND change Previw | per ogni colore attivo, controllare il cambio colore nello slider
+    //Previw - COLOR :  Color change  AND change Previw | per ogni colore attivo, controllare il cambio colore nello slider e preview
     for(var i=1; i<opti.max_color+1; i++){   
-	        jQuery(opti.colorsID+i).wpColorPicker({ // ISTRUZIONI COMANDI http://automattic.github.io/Iris/
-	        change: function(event, ui) { Grad_color_change (opti.sliderID,opti.nColorID,opti.colorsID); 
-	                                      Grad_condRadio_changePreview (opti.previewID,opti.nColorID,opti.colorsID,opti.positionID,Linear_edg,R_circle,R_ellipse,R_horiz,R_vert,G_rep,G_norep,G_linear,G_radial,G_circle,G_ellipse); 
-	                                    } //quando cambia il colore fai qualcosa -> //EG: ui.color.toString()
-	        });
+        jQuery(opti.colorsID+i).wpColorPicker({ // ISTRUZIONI COMANDI http://automattic.github.io/Iris/
+        change: function(event, ui) { Grad_color_change (opti.sliderID,opti.nColorID,opti.colorsID); 
+                                      Grad_condRadio_changePreview (opti.previewID,opti.nColorID,opti.colorsID,opti.positionID,TVar.Linear_edg,TVar.R_circle,TVar.R_ellipse,TVar.R_horiz,TVar.R_vert,TVar.G_rep,TVar.G_norep,TVar.G_linear,TVar.G_radial,TVar.G_circle,TVar.G_ellipse); 
+                                    } //quando cambia il colore fai qualcosa -> //EG: ui.color.toString()
+        });
     }
     //---------------------------
     
@@ -718,8 +766,8 @@ var
     
     
 
-	//°°°°°°°EXAMPLE BUTTON ON CLICK °°°°°°°°°°°°°°°°
-	//°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+//°°°°°°°EXAMPLE BUTTON ON CLICK °°°°°°°°°°°°°°°°
+//°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
 
 
 	//FUNCTION -----------------------------------------
@@ -885,37 +933,46 @@ var
 				        
 			//repeating
 			//repeat , not-repeat
-			if(Repeat_Action 	== 'repeat'){ 	console.dir(G_rep_input);
-												G_rep_input.prop("checked", true); 		G_rep.addClass('borderful'); 		G_norep.removeClass('borderful');				
-			} else {							G_norep_input.prop("checked", true);	G_rep.removeClass('borderful');		G_norep.addClass('borderful');					
+			if(Repeat_Action 	== 'repeat'){ 	TVar.G_rep_input.prop("checked", true); 	TVar.G_rep.addClass(opti.g_radio_select); 		TVar.G_norep.removeClass(opti.g_radio_select);				
+			} else {							TVar.G_norep_input.prop("checked", true);	TVar.G_rep.removeClass(opti.g_radio_select);	TVar.G_norep.addClass(opti.g_radio_select);					
 				 }
-			if(Linear_Radial 	== 'linear'){ 	G_linear_input.prop("checked", true);	G_linear.addClass('borderful');		G_radial.removeClass('borderful');	
+			if(Linear_Radial 	== 'linear'){ 	TVar.G_linear_input.prop("checked", true);	TVar.G_linear.addClass(opti.g_radio_select);	TVar.G_radial.removeClass(opti.g_radio_select);	
 													jQuery(opti.box_show_linear).css('display','block'); 	jQuery(opti.box_show_radial).css('display','none'); 
-			} else {							G_radial_input.prop("checked", true);	G_linear.removeClass('borderful');	G_radial.addClass('borderful');
+			} else {							TVar.G_radial_input.prop("checked", true);	TVar.G_linear.removeClass(opti.g_radio_select);	TVar.G_radial.addClass(opti.g_radio_select);
 													jQuery(opti.box_show_linear).css('display','none'); 	jQuery(opti.box_show_radial).css('display','block'); 
 				   }
 			
 			
 			//edg direction linear 
-			Linear_edg.val(Linear_direction);
-			Round_Slider(opti.sliderID_circle,Linear_edg,Linear_direction); //aziona il roundSlider per cambiare il valore
+			TVar.Linear_edg.val(Linear_direction);
+			Round_Slider(opti.sliderID_circle,TVar.Linear_edg,Linear_direction); //aziona il roundSlider per cambiare il valore
 
 
 			//radial cirlce elips button radio
-			if(Circle_Ellipse 	== 'circle'){ 	G_circle.prop("checked", true); 	G_circle.addClass('borderful'); 	G_ellipse.removeClass('borderful'); Box_show_ellipse.css('opacity','0.2');		} 
-			else {								G_ellipse.prop("checked", true); 	G_circle.removeClass('borderful'); 	G_ellipse.addClass('borderful'); 	Box_show_ellipse.css('opacity','1');		}
+			if(Circle_Ellipse 	== 'circle'){ 	TVar.G_circle.prop("checked", true); 	TVar.G_circle.addClass(opti.g_radio_select); 	TVar.G_ellipse.removeClass(opti.g_radio_select); TVar.Box_show_ellipse.css('opacity','0.2');		} 
+			else {								TVar.G_ellipse.prop("checked", true); 	TVar.G_circle.removeClass(opti.g_radio_select); TVar.G_ellipse.addClass(opti.g_radio_select); 	 TVar.Box_show_ellipse.css('opacity','1');		}
 			
 			//radial value option
-			R_circle.val(	Size_Circle);
-			R_ellipse.val(	Size_Ellipse);
-    		R_horiz.val(	Size_Horiz);
-    		R_vert.val(		Size_Vert);
+			TVar.R_circle.val(	Size_Circle);
+			TVar.R_ellipse.val(	Size_Ellipse);
+    		TVar.R_horiz.val(	Size_Horiz);
+    		TVar.R_vert.val(	Size_Vert);
 			//----------------------
 
         
 	} // Grad_condRadio_ExampleActive
 	//--------------------------------------------------
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	//START PAGE ------------
