@@ -300,6 +300,9 @@ var TVar = undefined;
 
 
 
+
+
+
   
 //°°°°°°°°°°°°°FUNCTION °°°°°°°°°°°°°°°°°°°°°
 //°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
@@ -342,7 +345,7 @@ var TVar = undefined;
 	 *  4 Slider_max    	[100] => numero massimo
 	 *  5 ID_input_position	['#id_singleinput'] 		=> variabile ID del campo input che deve variare quando cambia lo slider
 	 */
-	//        			      opti.sliderID | opti.slider_min | opti.slider_max | opti.slider_step
+	//        			    opti.sliderID | opti.slider_min | opti.slider_max | opti.slider_step
 	function Slider_MultiSelector(SliderID,Slider_min,Slider_max,Slider_step,Array_IDColor,Array_pos,Array_Col,ID_input_color,ID_input_pos){
 	
 		var handlers 	 = Array_pos,//EG: [9,4,5]
@@ -522,7 +525,7 @@ var TVar = undefined;
     }
     
     
-    //FUNCTION COLOR CHANGE -------------------
+    //FUNCTION COLOR CHANGE  | cambia il colore, cambia i dati colore-------------------
     //						opti.sliderID
     function Grad_color_change (SliderID,ID_colorActive,ID_Opt_color){
         var handle_slider = jQuery(SliderID+' .ui-slider-handle');  
@@ -539,7 +542,7 @@ var TVar = undefined;
     
     }
     
-    //FUNCTION POS CHANGE -------------------
+    //FUNCTION POS CHANGE | posizione cambia, cambia i dati posizione -------------------
 //						opti.sliderID
     function Grad_pos_change (SliderID,ID_colorActive,ID_Opt_pos){
         var N_Color = Number (jQuery(ID_colorActive).val());
@@ -549,6 +552,7 @@ var TVar = undefined;
                 else { ArrayInputID_POS.push('0'); jQuery(ID_Opt_pos+i).val('0'); }
         } 
         jQuery(SliderID).multiElementSlider('values', ArrayInputID_POS); 
+        
     }
 
     
@@ -626,7 +630,7 @@ var TVar = undefined;
          // console.log('G_size2: '+G_size2);
          // console.log('G_hoz: '+G_hoz);
          // console.log('G_vert: '+G_vert);
-   		console.log('Grad_previw_css_box');
+   		
     }    // Grad_previw_css_box -------------------------------------------------------
     
     
@@ -744,24 +748,21 @@ var TVar = undefined;
     TVar.Linear_edg.add(TVar.R_circle).add(TVar.R_ellipse).add(TVar.R_horiz).add(TVar.R_vert).bind("change",function() { GradcondRadiochangePreview_Callback(); 	});
   	//---------------------------
     
-    //Previw - COLOR POSITION NUMB(grad_color_pos1) - SLIDER :  change input position on box and slider  AND change Previw -------------- 
-    for(var i=1; i<opti.max_color+1; i++){ 
-    	jQuery(opti.positionID+i).bind("keyup",function() { GradcondRadiochangePreview_Callback(); 	});
-    	//il cambio nello slider viene effettuato nei comandi dello slider.
-    } 
-    //---------------------------
-
-    //Previw - COLOR :  Color change  AND change Previw | per ogni colore attivo, controllare il cambio colore nello slider e preview
-    for(var i=1; i<opti.max_color+1; i++){   
-        jQuery(opti.colorsID+i).wpColorPicker({ // ISTRUZIONI COMANDI http://automattic.github.io/Iris/
+   	for(var i=1; i<opti.max_color+1; i++){  // fir eanch max color  | per ogni colore visibile
+    	
+    	//Previw - COLOR POSITION NUMB(grad_color_pos1) - SLIDER :  change input position on box and slider  AND change Previw -------------- 
+    	jQuery(opti.positionID+i).bind("keyup",function() { GradcondRadiochangePreview_Callback(); 	 Gradposchange_Callback(); });
+    		//il cambio nello slider viene effettuato nei comandi dello slider.
+     	
+     	//Previw - COLOR :  Color change  AND change Previw | per ogni colore attivo, controllare il cambio colore nello slider e preview
+     	jQuery(opti.colorsID+i).wpColorPicker({ // ISTRUZIONI COMANDI http://automattic.github.io/Iris/
         change: function(event, ui) { Grad_color_change (opti.sliderID,opti.nColorID,opti.colorsID); 
                                       Grad_condRadio_changePreview (opti.previewID,opti.nColorID,opti.colorsID,opti.positionID,TVar.Linear_edg,TVar.R_circle,TVar.R_ellipse,TVar.R_horiz,TVar.R_vert,TVar.G_rep,TVar.G_norep,TVar.G_linear,TVar.G_radial,TVar.G_circle,TVar.G_ellipse); 
                                     } //quando cambia il colore fai qualcosa -> //EG: ui.color.toString()
         });
-    }
-    //---------------------------
+    }//-- end for -----------------------------------------------------------------------------------------------------
     
-    
+   
     
     
     
