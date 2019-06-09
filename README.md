@@ -5,11 +5,16 @@ Wordpress (backend) CSS gradient generator with Jquery.
 
 > Gradient Generator Simply for Wordpress wants to be a tool for all webmasters who want to integrate into their themes and plugins a CSS Gradient Generator without having to use third-party tools that implement jQuery too complex.
 
-<img  src="http://wp-gradgeneratorsimply-example.barbaralerici.net/wp-content/uploads/2017/05/example4.jpg" alt="" width="100%" height="auto" />
-<img  src="http://wp-gradgeneratorsimply-example.barbaralerici.net/wp-content/uploads/2017/05/example3.jpg" alt="" width="100%" height="auto" />
-<img src="http://wp-gradgeneratorsimply-example.barbaralerici.net/wp-content/uploads/2017/05/example-color-get.jpg" alt="" width="100%" height="auto" />
+![Exemple Image1](http://gradgeneratorsimply.barbaralerici.net/wp-content/uploads/2017/05/example4.jpg)
+![Exemple Image2](http://gradgeneratorsimply.barbaralerici.net/wp-content/uploads/2017/05/example3.jpg)
+![Exemple Image3](http://gradgeneratorsimply.barbaralerici.net/wp-content/uploads/2017/05/example-color-get.jpg)
 
-<br/><br/><br/>
+<br/><br/>
+
+# SITE
+http://gradgeneratorsimply.barbaralerici.net/](http://gradgeneratorsimply.barbaralerici.net/)
+
+
 
 
 # FUNCTION ONLY ON BACK-END
@@ -30,22 +35,22 @@ Wp-color-piker is not loaded in front-end version.
 - <a href="https://jquery.com/" target="_blank" rel="noopener noreferrer">Jquery</a>  (Loaded with wordpress)
 - <a href="https://jqueryui.com/" target="_blank" rel="noopener noreferrer">Jquery-UI</a>  (Loaded with wordpress)
 
-
-<a href="http://wp-gradgeneratorsimply-example.barbaralerici.net/wp-content/uploads/2017/05/jquery.jpg"><img class="alignnone size-medium wp-image-31" src="http://wp-gradgeneratorsimply-example.barbaralerici.net/wp-content/uploads/2017/05/jquery-300x121.jpg" alt="" width="300" height="121" /></a>
+![jquery](http://gradgeneratorsimply.barbaralerici.net/wp-content/uploads/2017/05/jquery-300x121.jpg)
 
 ## Made by other developers:
 
 - <a href="http://github.com/23r9i0/wp-color-picker-alpha" target="_blank" rel="noopener noreferrer">Wp-color-picker-alpha</a>
 - <a href="https://github.com/soundar24/roundSlider" target="_blank" rel="noopener noreferrer">RoundSlider</a>
 
-<a href="http://wp-gradgeneratorsimply-example.barbaralerici.net/wp-content/uploads/2017/05/wp-color-piker-alpha.jpg"><img class="size-medium wp-image-28 alignleft" src="http://wp-gradgeneratorsimply-example.barbaralerici.net/wp-content/uploads/2017/05/wp-color-piker-alpha-300x201.jpg" alt="" width="300" height="201" /></a><a href="http://wp-gradgeneratorsimply-example.barbaralerici.net/wp-content/uploads/2017/05/roundslider.jpg"><img class="size-full wp-image-29 alignleft" src="http://wp-gradgeneratorsimply-example.barbaralerici.net/wp-content/uploads/2017/05/roundslider.jpg" alt="" width="233" height="194" /></a>
+![image](http://gradgeneratorsimply.barbaralerici.net/wp-content/uploads/2017/05/wp-color-piker-alpha-300x201.jpg)
+![image](http://gradgeneratorsimply.barbaralerici.net/wp-content/uploads/2017/05/roundslider.jpg)
 
 ## CSS Fonts used:
 - <a href="http://fontawesome.io/" target="_blank" rel="noopener noreferrer">Awesome Font</a>
 These fonts can be easily replaced by the official wordpress word font because they just show for the + -.
 
+![jimage](http://gradgeneratorsimply.barbaralerici.net/wp-content/uploads/2017/05/fontawesome-300x114.jpg)
 
-<a href="http://wp-gradgeneratorsimply-example.barbaralerici.net/wp-content/uploads/2017/05/fontawesome.jpg"><img class="alignnone size-medium wp-image-30" src="http://wp-gradgeneratorsimply-example.barbaralerici.net/wp-content/uploads/2017/05/fontawesome-300x114.jpg" alt="" width="300" height="114" /></a>
 
 # Installation
 
