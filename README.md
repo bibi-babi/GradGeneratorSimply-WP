@@ -5,14 +5,14 @@ Wordpress (backend) CSS gradient generator with Jquery.
 
 > Gradient Generator Simply for Wordpress wants to be a tool for all webmasters who want to integrate into their themes and plugins a CSS Gradient Generator without having to use third-party tools that implement jQuery too complex.
 
-![Exemple Image1](http://gradgeneratorsimply.barbaralerici.net/wp-content/uploads/2017/05/example4.jpg)
-![Exemple Image2](http://gradgeneratorsimply.barbaralerici.net/wp-content/uploads/2017/05/example3.jpg)
-![Exemple Image3](http://gradgeneratorsimply.barbaralerici.net/wp-content/uploads/2017/05/example-color-get.jpg)
+
+![Exemple Image1](https://mir-s3-cdn-cf.behance.net/project_modules/hd_webp/8396be52480477.591229081bd89.jpg)
+
 
 <br/><br/>
 
-# SITE
-http://gradgeneratorsimply.barbaralerici.net/](http://gradgeneratorsimply.barbaralerici.net/)
+# SITE - Proget 
+[behance.net)(https://www.behance.net/gallery/52480477/Gradient-Generator-For-wordpress-(jquery) )
 
 
 
